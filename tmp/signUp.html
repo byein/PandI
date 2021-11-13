@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link
+            href='https://fonts.googleapis.com/css?family=Cherry Bomb'
+            rel='stylesheet'>
+        <link rel="stylesheet" href="./signUp.css"></link>
+
+    </head>
+
+    <body>
+        <header>
+            <div id="header-wrapper">
+                <h1>
+                    <a class="logo" href="./index.html" title="PandI">PandI</a>
+                </h1>
+                <div class="login-wrapper">
+                    <a class="signIn" href="">로그인</a>
+                    <a class="signUp" href="">회원가입</a>
+                </div>
+                <hr>
+                <nav class="nav">
+                    <div id="nav-wrapper">
+                        <ul class="menu">
+                            <li>
+                                <a href="">동물병원/약국 찾기</a>
+                            </li>
+                            <li class="menuBar">|</li>
+                            <li>
+                                <a href="">동반장소 찾기</a>
+                            </li>
+                            <li class="menuBar">|</li>
+                            <li>
+                                <a href="">정보 공유</a>
+                            </li>
+                            <li class="menuBar">|</li>
+                            <li>
+                                <a href="">일상 공유</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <h2 class="title"">
+                회원가입
+            </h2>
+            <form class="" action="/signUp_create" method="post" onsubmit="return check()">
+                <table id="infoTable" name="newID" width="800" height="">
+                    <tr>
+                        <td>아이디</td>
+                        <td><input id='userid' name='userid' type='text' maxlength='12' size='20'>
+                            <span class="valid">5~20자의 영문 대소문자와 숫자로만 입력</span></td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호</td>
+                        <td><input id='userpw' name='userpw' type='password' minlength='8' size='20'>
+                            <span class="valid">8자 이상의 영문 대소문자와 숫자, 특수문자로 입력</span></td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호확인</td>
+                        <td><input id='userpwcheck' type='password' minlength='8' size='20'></td>
+                    </tr>
+                    <tr>
+                        <td>메일주소</td>
+                        <td><input
+                            id='usermail'
+                            name='usermail'
+                            type='text'
+                            maxlength='30'
+                            size='20'
+                            placeholder="example@seoultech.ac.kr"></td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td><input id='userName' name='username' type='text' maxlength='12' size='20'></td>
+                    </tr>
+                    <tr>
+                        <td>주소</td>
+                        <td>
+                            <input type="text" id="sample4_postcode" name='postcode' placeholder="우편번호">
+                            <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                            <input type="text" id="sample4_roadAddress" name='road' placeholder="도로명주소">
+                            <input type="text" id="sample4_jibunAddress" name='jibun' placeholder="지번주소">
+                            <span id="guide" style="color:#999;display:none"></span><br>
+                            <input type="text" id="sample4_detailAddress" name='detail' placeholder="상세주소">
+                            <input type="text" id="sample4_extraAddress" name='extra' placeholder="참고항목">
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"><input type="submit" value="가입하기" class="btn"></td>
+                    </tr>
+                </table>
+            </form>
+
+        </main>
+        <footer id="footer">
+            <p>
+                <a href="./use.html">[이용약관]</a>
+                <a href="./privacy.html">[개인정보처리방침]</a>
+                <br><br>
+
+                [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707
+                <br>
+                Copyright 2021. PandI all rights reserved.<br>
+            </p>
+        </footer>
+
+    </body>
+
+</html>

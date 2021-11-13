@@ -1,0 +1,185 @@
+/* Main */
+html {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  background: #FFFFFF;
+}
+
+/* Rectangle 74 */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Rectangle 1 */
+header {
+  position: relative;
+  width: 100%;
+  height: 210px;
+}
+
+#header-wrapper {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  left: 0;
+  top: 0;
+
+  background: #3E3E3E;
+  text-align: center;
+  align-items: center;
+
+}
+
+#header-wrapper h1 {
+  margin: 0;
+  padding: 0;
+}
+
+/* PandI */
+.logo {
+  font-family: 'Cherry Bomb';
+  position: relative;
+  width: 30%;
+  height: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100px;
+  line-height: 100px;
+
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.login-wrapper {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  text-align: right;
+  right: 30px;
+}
+
+/* 로그인 */
+.signIn,
+.signUp {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 0 5px;
+
+}
+
+nav {
+  width: 100%;
+  height: 50px;
+}
+
+#nav-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  height: 50px;
+  display: flex;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 48px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+nav .menu {
+  display: flex;
+  width: 100%;
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+nav .menu .menuBar {
+  font-weight: 100;
+  flex: 0.1;
+}
+nav .menu li {
+  flex: 1;
+  display: inline-block;
+  text-align: center;
+  border-right: #FFFFFF;
+
+}
+
+nav .menu li a {
+  text-align: center;
+  text-decoration: none;
+  text-align: center;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 0.5em;
+  color: #FFFFFF;
+}
+
+/* 여기까지 헤더바 */
+
+#footer {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  background-color: #3E3E3E;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#footer a {
+  font-weight: bold;
+}
+
+main {
+  position: relative;
+  margin: 30px;
+}
+
+.circle_number,
+.head {
+  list-style: none;
+}
+
+.Korean {
+  list-style: none;
+  text-indent: -1.5em;
+}
+
+.Korean .dash {
+  list-style-type: none;
+  text-indent: -0.8em;
+}
+
+table {
+  width: 100%;
+}
+table,
+td,
+th,
+tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 20px auto;
+  text-align: center;
+  padding: 5px 0;
+
+}
+
+h2 {
+  text-align: center;
+  color: #3E3E3E;
+}

@@ -1,0 +1,333 @@
+/* Main */
+html {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    background: #FFFFFF;
+}
+
+/* Rectangle 74 */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* Rectangle 1 */
+header {
+    position: relative;
+    width: 100%;
+    height: 210px;
+}
+
+#header-wrapper {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    left: 0;
+    top: 0;
+
+    background: #3E3E3E;
+    text-align: center;
+    align-items: center;
+
+}
+
+#header-wrapper h1 {
+    margin: 0;
+    padding: 0;
+}
+
+/* PandI */
+.logo {
+    font-family: 'Cherry Bomb';
+    position: relative;
+    width: 30%;
+    height: 100%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100px;
+    line-height: 100px;
+
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.login-wrapper {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    text-align: right;
+    right: 30px;
+}
+
+/* 로그인 */
+.signIn,
+.signUp {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0 5px;
+
+}
+
+nav {
+    width: 100%;
+    height: 50px;
+}
+
+#nav-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    height: 50px;
+    display: flex;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 48px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+nav .menu {
+    display: flex;
+    width: 100%;
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+nav .menu .menuBar {
+    font-weight: 100;
+    flex: 0.1;
+}
+nav .menu li {
+    flex: 1;
+    display: inline-block;
+    text-align: center;
+    border-right: #FFFFFF;
+
+}
+
+nav .menu li a {
+    text-align: center;
+    text-decoration: none;
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 0.5em;
+    color: #FFFFFF;
+}
+
+/* 여기까지 헤더바 */
+
+#footer{
+    position: relative;
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    background-color: #3E3E3E;
+    color:#FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#footer a{
+    font-weight: bold;
+}
+
+
+main {
+    position: relative;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 450px;
+}
+
+/* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+    max-height: 400px;
+    position: relative;
+    margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    height: 400px;
+}
+
+/* Next & previous buttons */
+.next,
+.prev {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.next:hover,
+.prev:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.findLocation {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.searchForm {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.searchText {
+    /* 내 주변 동물병원/약국 찾기 */
+    position: relative;
+    width: 50%;
+
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    /* identical to box height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #3E3E3E;
+}
+
+/* Rectangle 2 */
+.search {
+    position: relative;
+    width: 30%;
+    padding: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: #FFFFFF;
+    border: 5px solid #3E3E3E;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+
+}
+
+.btnSearch {
+    display: flex;
+    position: relative;
+    transform: translateY(-50%);
+    background: url("C:\\Users\\KYB\\OneDrive - 서울과학기술대학교\\바탕 화면\\Univ\\Lecture\\Major\\Advanced_Web_Programming\\TermProject\\search.png");
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+
+    top: 50%;
+    left: -50px;
+    width: 30px;
+    height: 30px;
+    border: 0px;
+}
+
