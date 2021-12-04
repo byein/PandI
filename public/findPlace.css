@@ -1,0 +1,113 @@
+
+main {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+
+.findLocation {
+    position: relative;
+    width: 100%;
+}
+
+.searchForm {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.searchText {
+    position: relative;
+    width: 50%;
+
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.7em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #3E3E3E;
+}
+
+.search {
+    position: relative;
+    width: 30%;
+    padding: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: #FFFFFF;
+    border: 5px solid #3E3E3E;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+
+}
+
+.btnSearch {
+    display: flex;
+    position: relative;
+    transform: translateY(-50%);
+    background: url("C:\\Users\\KYB\\OneDrive - 서울과학기술대학교\\바탕 화면\\Univ\\Lecture\\Major\\Advanced_Web_Programming\\TermProject\\search.png");
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+
+    top: 50%;
+    left: -50px;
+    width: 30px;
+    height: 30px;
+    border: 0px;
+}
+
+
+.googleMap{
+    height: 500px;
+    width: 100%;
+
+}
+
+#map {
+height: 350px;
+}
+
+.locationList{
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 15px auto;
+    justify-content: center;
+}
+caption{
+    margin: 10px 0px;
+}
+.locationTable{
+    width: 40%;
+    height: 100%;
+    margin: 30px;
+    border-collapse: collapse;
+}
+.locationTable tr{
+    border-bottom: 1px solid #3E3E3E;
+}
+
+.btnDetail{
+    color: #FFFFFF;
+    background: #4E7EF8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+
+

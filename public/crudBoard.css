@@ -1,0 +1,82 @@
+
+main {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+.share{
+    position: relative;
+    width: 100%;
+    margin: 50px 0px;
+}
+.crudboard {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    padding: 50px;
+}
+caption {
+    margin: 10px 0;
+    text-align: start;
+    font-size: 1.5em;
+    font-weight: 900;
+    color: #3E3E3E;
+
+}
+
+.boardTable {
+    margin: 15px auto;
+    width: 70%;
+    height: 100%;
+    border-collapse: collapse;
+    border-top: 5px solid #3E3E3E;
+    border-bottom: 5px solid #3E3E3E;
+}
+.boardTable thead tr {
+    border-bottom: 2px solid #3E3E3E;
+    height: 65px;
+}
+
+.boardTable thead th {
+    text-align: center;
+}
+.boardTable tbody tr {
+    border-bottom: 1px solid #3E3E3E;
+    height: 55px;
+}
+.boardTable tbody td {
+    font-style: normal;
+    font-weight:500;
+    text-align: center;
+}
+
+.event {
+    background: #EFE3E3;
+}
+
+.center{
+    text-align: center;
+}
+.pagination {
+    display: inline-block;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination a.active {
+    background-color: #3E3E3E;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+  }

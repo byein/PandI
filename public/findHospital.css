@@ -1,0 +1,29 @@
+
+.hospitalType{
+    text-align: start;
+    color: #AD1D1D;
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+.hospitalName{
+    color: #AD1D1D;
+    font-weight: 900;
+}
+
+
+.pharmacyType{
+    text-align: start;
+    font-size: 1.5em;
+    font-weight: 900;
+    color: #1D45AD;
+}
+
+.pharmacyName{
+    color: #1D45AD;
+    font-weight: 900;
+}
+
+
+
+

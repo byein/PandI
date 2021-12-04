@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PandI</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link
+            href='https://fonts.googleapis.com/css?family=Cherry Bomb'
+            rel='stylesheet'>
+        <link rel="stylesheet" href="/base.css"></link>
+
+        <link rel="stylesheet" href="/index.css"></link>
+        <script src="/index.js"></script>
+
+    </head>
+
+    <body>
+        <header>
+            <div id="header-wrapper">
+                <h1>
+                    <a class="logo" href="/index.html" title="PandI">PandI</a>
+                </h1>
+                <div class="login-wrapper">
+                    <a class="signIn" href="/login.html">로그인</a>
+                    <a class="signUp" href="/signUp.html">회원가입</a>
+                </div>
+                <hr>
+                <nav class="nav">
+                    <div id="nav-wrapper">
+                        <ul class="menu">
+                            <li>
+                                <a href="/findHospital.html">동물병원/약국 찾기</a>
+                            </li>
+                            <li class="menuBar">|</li>
+                            <li>
+                                <a href="/findPetPlace.html">동반장소 찾기</a>
+                            </li>
+                            <li class="menuBar">|</li>
+                            <li>
+                                <a href="/crudTipsBoard.html">정보 공유</a>
+                            </li>
+                            <li class="menuBar">|</li>
+                            <li>
+                                <a href="/crudDailyBoard.html">일상 공유</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <article class="banner">
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
+
+                    <!-- Full-width images with number and caption text -->
+                    <div class="mySlides fade">
+                        <div class="numbertext">1 / 3</div>
+                        <img src="http://pet-kingdom.co.kr/_d1/img/mainslide/02.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">2 / 3</div>
+                        <img src="http://pet-kingdom.co.kr/_d1/img/mainslide/01.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">3 / 3</div>
+                        <img
+                            src="https://previews.123rf.com/images/robuart/robuart1611/robuart161100243/67672904-%EC%A0%84%EB%AC%B8-%EA%B0%9C-%ED%9B%88%EB%A0%A8-%EB%B0%B0%EB%84%88%EC%9E%85%EB%8B%88%EB%8B%A4-%ED%8C%8C%EB%9E%80%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EB%8B%A4%EB%A5%B8-%EC%9C%A0%ED%98%95-%EA%B0%95%EC%95%84%EC%A7%80%EC%9D%98-%EA%B7%B8%EB%A3%B9%EC%9E%85%EB%8B%88%EB%8B%A4-%EC%9B%B9-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EA%B0%80%EB%A1%9C-%ED%85%9C%ED%94%8C%EB%A6%BF%EC%9E%85%EB%8B%88%EB%8B%A4-%EA%B0%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%ED%94%8C%EB%9E%AB-%EC%8A%A4%ED%83%80%EC%9D%BC%EC%97%90%EC%84%9C-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4-%EC%85%98-%EB%A7%8C%ED%99%94-%EA%B0%9C-%EC%BA%90%EB%A6%AD%ED%84%B0-%EC%95%A0%EC%99%84%EC%9A%A9-%EB%8F%99%EB%AC%BC.jpg"
+                            style="width:100%">
+                    </div>
+
+                    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+
+                <!-- The dots/circles -->
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </article>
+
+            <script type="text/javascript" src="/index.js"></script>
+
+            <article class="findLocation">
+                <form class="searchForm">
+                    <div class="searchText">내 주변 동물병원/약국 찾기</div>
+                    <input class="search" type="text" class="search" name="hospital" maxlength="255" value="">
+                    <button type="submit" class="btnSearch" value=""></button>
+                </form>
+            </article>
+
+        </main>
+        <footer id="footer">
+            <p>
+                <a href="/use.html">[이용약관]</a>
+                <a href="/privacy.html">[개인정보처리방침]</a>
+                <br><br>
+    
+                [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707 <br>
+                Copyright 2021. PandI all rights reserved.<br>
+            </p>
+        </footer>
+
+    </body>
+
+</html>

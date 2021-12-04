@@ -1,0 +1,88 @@
+caption div {
+    display: inline-flex;
+    justify-content: end;
+    float: right;
+    margin: 0 3px;
+}
+.btnMammal {
+    width: 65px;
+    height: 30px;
+    background: #A27D7D;
+    border: 5px solid #3E3E3E;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+    cursor: pointer;
+
+}
+.btnBird {
+    width: 65px;
+    height: 30px;
+    background: #A66932;
+    border: 5px solid #3E3E3E;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+
+    color: #FFFFFF;
+    cursor: pointer;
+
+}
+.btnFish {
+    width: 65px;
+    height: 30px;
+    background: #4A597E;
+    border: 5px solid #3E3E3E;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+
+    color: #FFFFFF;
+    cursor: pointer;
+
+}
+.btnReptile {
+    width: 65px;
+    height: 30px;
+    background: #406533;
+    border: 5px solid #3E3E3E;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+
+}
+.btnShellfish {
+    width: 65px;
+    height: 30px;
+    background: #9A4444;
+    border: 5px solid #3E3E3E;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+
+    color: #FFFFFF;
+    cursor: pointer;
+
+}

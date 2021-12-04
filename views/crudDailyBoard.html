@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물병원/약국 찾기</title>
+    <link href='https://fonts.googleapis.com/css?family=Cherry Bomb' rel='stylesheet'>
+    <link rel="stylesheet" href="../public/base.css">
+    </link>
+    <link rel="stylesheet" href="/public/crudBoard.css">
+    </link>
+    <link rel="stylesheet" href="/public/crudDailyBoard.css">
+    </link>
+    <script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap&v=weekly" async defer></script>
+
+    <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly" async defer></script>-->
+    <script src="/router/crudDailyBoard.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="header-wrapper">
+            <h1>
+                <a class="logo" href="index.html" title="PandI">PandI</a>
+            </h1>
+            <div class="login-wrapper">
+                <a class="signIn" href="login.html">로그인</a>
+                <a class="signUp" href="signUp.html">회원가입</a>
+            </div>
+            <hr>
+            <nav class="nav">
+                <div id="nav-wrapper">
+                    <ul class="menu">
+                        <li>
+                            <a href="findHospital.html">동물병원/약국 찾기</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="findPetPlace.html">동반장소 찾기</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="crudTipsBoard.html">정보 공유</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="crudDailyBoard.html">일상 공유</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <article class="share">
+            <div class="crudBoard">
+                <table class="boardTable">
+                    <caption class="boardType">일상 게시판</caption>
+                    <colgroup>
+                        <col width="10%">
+                        <col width="50%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>펫종류</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                            <th>조회수</th>
+                            <th>추천수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="event">
+                            <td>전체</td>
+                            <td>[공지]  ‘가장 멋진 펫을 골라줘’ 이벤트 개최!</td>
+                            <td>관리자</td>
+                            <td>2021-10-27</td>
+                            <td>1143</td>
+                            <td>110</td>
+                        </tr>
+                        <tr>
+                            <td>포유류</td>
+                            <td>뭉치 사진 공유해요~</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>포유류</td>
+                            <td>나비 사진</td>
+                            <td>홍길동</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>파충류</td>
+                            <td>랩터 사진!</td>
+                            <td>김영희</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>갑각류</td>
+                            <td>식용 아닙니다!</td>
+                            <td>사용자</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>갑각류</td>
+                            <td>타란튤라 보고 가세요~</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>조류</td>
+                            <td>우리 앵무 말 잘하죠?</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>포유류</td>
+                            <td>길냥이에요~</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>파충류</td>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>파충류</td>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="center">
+                    <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">&raquo;</a>
+                      </div>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+    <footer id="footer">
+        <p>
+            <a href="./use.html">[이용약관]</a>
+            <a href="./privacy.html">[개인정보처리방침]</a>
+            <br><br>
+
+            [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707 <br>
+            Copyright 2021. PandI all rights reserved.<br>
+        </p>
+    </footer>
+
+</body>
+
+</html>
