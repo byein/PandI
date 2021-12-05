@@ -89,12 +89,14 @@ app.get('/', function(request, response){
 //     response.sendFile(path.join(__dirname + '/views/login.html'));
 // 	}
 // });
-app.get('/login', function(request, response){
-  response.render('login');
-});
 app.get('/', function(request, response) {
 	response.sendFile(path.join(__dirname + '/views/index.html'));
 });
+
+app.get('/login', function(request, response){
+    response.sendFile(path.join(__dirname + '/views/login.html'));
+});
+
 
 app.get('/login', function(request, response) {
 	response.sendFile(path.join(__dirname + '/views/login.html'));
@@ -159,6 +161,25 @@ app.get('/logout', function(request, response) {
   request.session.loggedin = false;
 	response.send('<center><H1>Logged Out.</H1><H1><a href="/">Goto Home</a></H1></center>');
 	response.end();
+});
+
+app.get('/findHospital', function(request, response) {
+	response.sendFile(path.join(__dirname + '/views/findHospital.html'));
+});
+app.get('/findPetPlace', function(request, response) {
+	response.sendFile(path.join(__dirname + '/views/findPetPlace.html'));
+});
+app.get('/crudTipsBoard', function(request, response) {
+	response.sendFile(path.join(__dirname + '/views/crudTipsBoard.html'));
+});
+app.get('/crudDailyBoard', function(request, response) {
+	response.sendFile(path.join(__dirname + '/views/crudDailyBoard.html'));
+});
+app.get('/use', function(request, response) {
+	response.sendFile(path.join(__dirname + '/views/use.html'));
+});
+app.get('/privacy', function(request, response) {
+	response.sendFile(path.join(__dirname + '/views/privacy.html'));
 });
 
 // app.get('/index', restrict, function(request, response) {
