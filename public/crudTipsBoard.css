@@ -84,5 +84,9 @@ caption div {
 
     color: #FFFFFF;
     cursor: pointer;
+}
 
+.boardType button a{
+    color: white;
+    text-decoration: none;
 }

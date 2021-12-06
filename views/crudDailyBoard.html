@@ -59,7 +59,9 @@
         <article class="share">
             <div class="crudBoard">
                 <table class="boardTable">
-                    <caption class="boardType">일상 게시판</caption>
+                    <caption class="boardType">일상 게시판
+                    </caption>
+                    
                     <colgroup>
                         <col width="10%">
                         <col width="50%">
@@ -79,99 +81,53 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="event">
-                            <td>전체</td>
-                            <td>[공지]  ‘가장 멋진 펫을 골라줘’ 이벤트 개최!</td>
-                            <td>관리자</td>
-                            <td>2021-10-27</td>
-                            <td>1143</td>
-                            <td>110</td>
-                        </tr>
-                        <tr>
-                            <td>포유류</td>
-                            <td>뭉치 사진 공유해요~</td>
-                            <td>김예빈</td>
-                            <td>2021-10-27</td>
-                            <td>143</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>포유류</td>
-                            <td>나비 사진</td>
-                            <td>홍길동</td>
-                            <td>2021-10-27</td>
-                            <td>143</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>파충류</td>
-                            <td>랩터 사진!</td>
-                            <td>김영희</td>
-                            <td>2021-10-27</td>
-                            <td>143</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>갑각류</td>
-                            <td>식용 아닙니다!</td>
-                            <td>사용자</td>
-                            <td>2021-10-27</td>
-                            <td>143</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>갑각류</td>
-                            <td>타란튤라 보고 가세요~</td>
-                            <td>김예빈</td>
-                            <td>2021-10-27</td>
-                            <td>143</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>조류</td>
-                            <td>우리 앵무 말 잘하죠?</td>
-                            <td>김예빈</td>
-                            <td>2021-10-27</td>
-                            <td>143</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>포유류</td>
-                            <td>길냥이에요~</td>
-                            <td>김예빈</td>
-                            <td>2021-10-27</td>
-                            <td>143</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>파충류</td>
-                            <td>강아지 이빨 손질 방법!</td>
-                            <td>김예빈</td>
-                            <td>2021-10-27</td>
-                            <td>143</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>파충류</td>
-                            <td>강아지 이빨 손질 방법!</td>
-                            <td>김예빈</td>
-                            <td>2021-10-27</td>
-                            <td>143</td>
-                            <td>10</td>
-                        </tr>
+                        <% list.forEach(function(item, index) { %>
+                            <tr>
+                                <a href="/detailDaily" >
+                                <td>
+                                    <%= item.sort %>
+                                </td>
+                                <td>
+                                    <%= item.title %>
+                                </td>
+                                <td>
+                                    <%= item.userName %>
+                                </td>
+                                <td>
+                                    <%= item.date %>
+                                </td>
+                                <td>
+                                    <%= item.view %>
+                                </td>
+                                <td>
+                                    <%= item.likes %>
+                                </td>
+                                </a>
+                            </tr>
+                            <% }); %>
                     </tbody>
+
+
                 </table>
+                <div class="btn"><a href="/insertDaily">작성하기</a></div>
+
                 <div class="center">
                     <div class="pagination">
-                        <a href="#">&laquo;</a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">&raquo;</a>
-                      </div>
+
+                        <% if (Number(page) === 1){ %>
+                            <a href="/crudDailyBoard/?page=<%= page %>">&laquo;</a>
+                        <% }else{ %>
+                            <a href="/crudDailyBoard/?page=<%= page-1 %>">&laquo;</a>
+                        <% } %>
+                        <% for(var i=1;i<=(total+5)/5;i+=1) { %>
+                            <a href="/crudDailyBoard/?page=<%= i %>" <% if(i==page) { %>class="active"<% } %> >  <%= i %></a>
+                        <% } %>
+                        <% if (Number(page) === parseInt((total+5)/5)){ %>
+                            <a href="/crudDailyBoard/?page=<%= page %>">&raquo;</a>
+                        <% }else{ %>
+                            <a href="/crudDailyBoard/?page=<%= Number(page)+1 %>">&raquo;</a>
+                        <% } %>
+                    </div>
                 </div>
             </div>
 

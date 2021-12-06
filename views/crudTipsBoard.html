@@ -58,11 +58,11 @@
             <div class="crudBoard">
                 <table class="boardTable">
                     <caption class="boardType">정보 게시판
-                        <div><button class="btnShellfish">갑각류</button></div>
-                        <div><button class="btnReptile">파충류</button></div>
-                        <div><button class="btnFish">어류</button></div>
-                        <div><button class="btnBird">조류</button></div>
-                        <div><button class="btnMammal">포유류</button></div>
+                        <div><button class="btnShellfish"><a href="/crudTipsBoard/?sort=shellfish&page=<%= page %>">갑각류</a></button></div>
+                        <div><button class="btnReptile"><a href="/crudTipsBoard/?sort=reptile&page=<%= page %>">파충류</a></button></div>
+                        <div><button class="btnFish"><a href="/crudTipsBoard/?sort=fish&page=<%= page %>">어류</a></button></div>
+                        <div><button class="btnBird"><a href="/crudTipsBoard/?sort=bird&page=<%= page %>">조류</a></button></div>
+                        <div><button class="btnMammal"><a href="/crudTipsBoard/?sort=mammal&page=<%= page %>">포유류</a></button></div>
                     </caption>
                     <colgroup>
                         <col width="60%">
@@ -81,7 +81,52 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="event">
+                        <% tips.forEach(function(item, index) { %>
+                            <tr>
+                                <td>
+                                    <%= item.title %>
+                                </td>
+                                <td>
+                                    <%= item.userName %>
+                                </td>
+                                <td>
+                                    <%= item.date %>
+                                </td>
+                                <td>
+                                    <%= item.view %>
+                                </td>
+                                <td>
+                                    <%= item.likes %>
+                                </td>
+                            </tr>
+
+                            <% }); %>
+                    </tbody>
+
+
+                </table>
+                <div class="btn"><a href="/insertTips">작성하기</a></div>
+
+                <div class="center">
+                    <div class="pagination">
+
+                        <% if (Number(page)===1){ %>
+                            <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= page %>">&laquo;</a>
+                        <% }else{ %>
+                            <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= page-1 %>">&laquo;</a>
+                        <% } %>
+                        <% for(var i=1;i<=(total+5)/5;i+=1) { %>
+                            <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= i %>" <% if(i==page) { %>class="active"<% } %> > <%= i %></a>
+                        <% } %>
+                        <% if (Number(page)===parseInt((total+5)/5)){ %>
+                            <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= page %>">&raquo;</a>
+                        <% }else{ %>
+                            <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= Number(page)+1 %>">&raquo;</a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <!-- <tr class="event">
                             <td>[이벤트] 배변봉투 무료나눔 이벤트!</td>
                             <td>관리자</td>
                             <td>2021-10-27</td>
@@ -151,21 +196,21 @@
                             <td>143</td>
                             <td>10</td>
                         </tr>
-                    </tbody>
-                </table>
-                <div class="center">
-                    <div class="pagination">
-                        <a href="#">&laquo;</a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">&raquo;</a>
-                      </div>
-                </div>
-            </div>
+                        </tbody>
+                        </table>
+                        <div class="center">
+                            <div class="pagination">
+                                <a href="#">&laquo;</a>
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">&raquo;</a>
+                            </div>
+                        </div>
+                        </div> -->
 
         </article>
 

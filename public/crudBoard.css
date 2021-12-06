@@ -61,6 +61,7 @@ caption {
 }
 .pagination {
     display: inline-block;
+    margin-left: 15%;
   }
   
   .pagination a {
@@ -79,4 +80,16 @@ caption {
   .pagination a:hover:not(.active) {
     background-color: #ddd;
     border-radius: 5px;
+  }
+
+  .btn a{
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: #3E3E3E;
+    border-radius: 5px;
+    position:relative;
+    font-size: 15px;
+    float: right;
+    margin-right: 15%;
   }

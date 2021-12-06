@@ -58,7 +58,7 @@ main {
     display: flex;
     position: relative;
     transform: translateY(-50%);
-    background: url("C:\\Users\\KYB\\OneDrive - 서울과학기술대학교\\바탕 화면\\Univ\\Lecture\\Major\\Advanced_Web_Programming\\TermProject\\search.png");
+    background: url("/img/search.png");
     background-repeat: no-repeat;
     background-size: 30px 30px;
 
