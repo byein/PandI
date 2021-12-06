@@ -11,14 +11,16 @@
     </link>
     <link rel="stylesheet" href="/crudBoard.css">
     </link>
-    <link rel="stylesheet" href="/crudDailyBoard.css">
+    <link rel="stylesheet" href="/crudTipsBoard.css">
     </link>
-    <link rel="stylesheet" href="/addBoard.css">
+    <link rel="stylesheet" href="/addCrudBoard.css">
+    </link>
+    <link rel="stylesheet" href="/detailBoard.css">
     </link>
     <script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap&v=weekly" async defer></script>
 
     <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly" async defer></script>-->
-    <script src="/crudDailyBoard.js"></script>
+    <script src="/crudTipsBoard.js"></script>
 </head>
 
 <body>
@@ -31,11 +33,9 @@
                 <% if(!un){ %>
                     <a class="signIn" href="/login">로그인</a>
                     <a class="signUp" href="/register">회원가입</a>
-                    <% } else{ %>
-                        <a class="signIn">
-                            <%= un %> 님 환영합니다!
-                        </a>
-                        <% } %>
+                <% } else{ %>
+                    <a class="signIn"><%= un %> 님 환영합니다!</a>
+                <% } %>
             </div>
             <hr>
             <nav class="nav">
@@ -66,37 +66,35 @@
 
         <article class="share">
             <div class="crudBoard">
-                <form method="post">
                     <table>
-                        <caption class="boardType">정보 게시판 글쓰기</caption>
+                        <caption class="boardType">정보 게시판
+                            <div><button class="btnShellfish"><a href="/deleteTips/<%= data.id %>">DELETE</a></button></div>
+                            <div><button class="btnReptile"><a href="/editTips/<%= data.id %>">EDIT</a></button></div>
+                        </caption>
+                        <colgroup>
+                            <col width="20%">
+                            <col width="80%">
+                        </colgroup>
                         <tr>
-                            <td>
+                            <th>
                                 <label>제목</label>
-                            </td>
-                            <td><input type="text" name="title" /></td>
+                            </th>
+                            <td><%= data.title %></td>
                         </tr>
                         <tr>
-                            <td><Label>종류</Label></td>
-                            <td><select name="sort" id="petSort">
-                                    <option value="mammal">포유류</option>
-                                    <option value="bird">조류</option>
-                                    <option value="fish">어류</option>
-                                    <option value="reptile">파충류</option>
-                                    <option value="shellfish">갑각류</option>
-                                </select></td>
+                            <th><Label>종류</Label></th>
+                            <td><%= data.sort %></td>
                         </tr>
                         <tr>
-                            <td><label>팁 사진</label></td>
-                            <td><input type="file" multiple name="pimg" multiple id="pimg" accept="image/*"></td>
+                            <th><label>팁 사진</label></th>
+                            <td class="pimg"><%= data.img %></td>
                         </tr>
                         <tr>
-                            <td><label>글쓰기</label></td>
-                            <td><textarea id="review" rows="5" cols="30" maxlength="1000" name="rReview"
-                                    placeholder="1000자 이내(미만)의 정보를 공유해주세요."></textarea></td>
+                            <th><label>내용</label></th>
+                            <td class="text"><%= data.text %></td>
                         </tr>
                     </table>
-                    <input type="submit" value="등록하기" id="btnSubmit"/>
-                </form>
+                    
         </article>
 
     </main>

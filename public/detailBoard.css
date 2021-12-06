@@ -1,0 +1,61 @@
+.crudboard {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    padding: 50px;
+}
+table{
+    width: 70%;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+form{
+    display: grid;
+}
+
+input[type=submit]{
+    border: none;
+
+    margin: auto;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #3E3E3E;
+    color: white;
+    cursor: pointer;
+}
+ table th td a{
+
+    text-decoration: none;
+    color: black;
+  }
+
+  table, th, td {
+      border: 0px;
+      border-collapse: collapse;
+  }
+
+  table th{
+      border-right: 1px solid;
+  }
+
+  table tr{
+    border-bottom: 1px solid #3E3E3E;
+    border-top: 1px solid #3E3E3E;
+     
+  }
+  table td{
+ 
+      text-align: center;
+      line-height: 18px;
+  }
+
+  .pimg{
+      width: fit-content;
+  }
+
+  .text{
+     height: 500px;
+     max-width: fit-content;
+     text-align: justify;
+  }

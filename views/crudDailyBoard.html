@@ -87,26 +87,36 @@
                     <tbody>
                         <% list.forEach(function(item, index) { %>
                             <tr>
-                                <a href="/detailDaily" >
                                 <td>
-                                    <%= item.sort %>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
+                                        <%= item.sort %>
+                                    </a>
                                 </td>
                                 <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
                                     <%= item.title %>
+                                    </a>
                                 </td>
                                 <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
                                     <%= item.userName %>
+                                    </a>
                                 </td>
                                 <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
                                     <%= item.date %>
+                                    </a>
                                 </td>
                                 <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
                                     <%= item.view %>
+                                    </a>
                                 </td>
                                 <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
                                     <%= item.likes %>
+                                    </a>
                                 </td>
-                                </a>
                             </tr>
                             <% }); %>
                     </tbody>

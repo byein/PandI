@@ -253,6 +253,19 @@ app.get('/crudTipsBoard', function (request, response) {
         });
     });
 });
+
+
+app.get('/crudTipsBoard/detail/:id', function (request, response) {
+    fs.readFile(__dirname + '/views/detailTipsBoard.html', 'utf8', function (error, data) {
+        connection.query('SELECT * FROM tips WHERE id=?', [request.param('id')], function (error, result) {
+            response.send(ejs.render(data, {
+                data: result[0],
+                un: request.session.username
+            }));
+        });
+    });
+});
+
 app.get('/deleteTips/:id', function (request, response) {
     connection.query('DELETE FROM products WHERE id=?', [request.param('id')], function () {
         response.redirect('/crudTipsBoard');
@@ -399,6 +412,18 @@ app.get('/crudDailyBoard', function (request, response) {
     });
 });
 
+app.get('/crudDailyBoard/detail/:id', function (request, response) {
+    fs.readFile(__dirname + '/views/detailDailyBoard.html', 'utf8', function (error, data) {
+        connection.query('SELECT * FROM daily WHERE id=?', [request.param('id')], function (error, result) {
+            response.send(ejs.render(data, {
+                data: result[0],
+                un: request.session.username
+            }));
+        });
+    });
+});
+
+
 app.get('/deleteDaily/:id', function (request, response) {
     connection.query('DELETE FROM products WHERE id=?', [request.param('id')], function () {
         response.redirect('/crudDailyBoard');
@@ -458,7 +483,7 @@ app.get('/editDaily/:id', function (request, response) {
         connection.query('SELECT * FROM daily WHERE id = ?', [
             request.param('id')
         ], function (error, result) {
-            // �����մϴ�.
+            console.log(result[0]);
             response.send(ejs.render(data, {
                 data: result[0],
                 un:request.session.username

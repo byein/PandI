@@ -93,3 +93,8 @@ caption {
     float: right;
     margin-right: 15%;
   }
+
+ table tr td a{
+    text-decoration: none;
+    color: black;
+  }
