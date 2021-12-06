@@ -67,7 +67,8 @@ header {
 
 /* 로그인 */
 .signIn,
-.signUp {
+.signUp,
+.logout {
     color: #FFFFFF;
     text-decoration: none;
     padding: 0 5px;

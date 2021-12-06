@@ -13,6 +13,8 @@
     </link>
     <link rel="stylesheet" href="/crudDailyBoard.css">
     </link>
+    <link rel="stylesheet" href="/addCrudBoard.css">
+    </link>
     <script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap&v=weekly" async defer></script>
 
     <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly" async defer></script>-->
@@ -26,8 +28,14 @@
                 <a class="logo" href="/" title="PandI">PandI</a>
             </h1>
             <div class="login-wrapper">
-                <a class="signIn" href="/login">로그인</a>
-                <a class="signUp" href="/register">회원가입</a>
+                <% if(!un){ %>
+                    <a class="signIn" href="/login">로그인</a>
+                    <a class="signUp" href="/register">회원가입</a>
+                    <% } else{ %>
+                        <a class="signIn">
+                            <%= un %> 님 환영합니다!
+                        </a>
+                        <% } %>
             </div>
             <hr>
             <nav class="nav">
@@ -70,12 +78,12 @@
                         <tr>
                             <td><Label>종류</Label></td>
                             <td><select name="sort" id="petSort">
-                                <option value="mammal">포유류</option>
-                                <option value="bird">조류</option>
-                                <option value="fish">어류</option>
-                                <option value="reptile">파충류</option>
-                                <option value="shellfish">갑각류</option>
-                            </select></td>
+                                    <option value="mammal">포유류</option>
+                                    <option value="bird">조류</option>
+                                    <option value="fish">어류</option>
+                                    <option value="reptile">파충류</option>
+                                    <option value="shellfish">갑각류</option>
+                                </select></td>
                         </tr>
                         <tr>
                             <td><label>팁 사진</label></td>
@@ -84,10 +92,10 @@
                         <tr>
                             <td><label>글쓰기</label></td>
                             <td><textarea id="review" rows="5" cols="30" maxlength="1000" name="rReview"
-                                placeholder="1000자 이내(미만)의 정보를 공유해주세요."></textarea></td>
+                                    placeholder="1000자 이내(미만)의 정보를 공유해주세요."></textarea></td>
                         </tr>
                     </table>
-                    <input type="submit" value="등록하기"/>
+                    <input type="submit" value="등록하기" id="btnSubmit"/>
                 </form>
         </article>
 

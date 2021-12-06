@@ -57,8 +57,22 @@ app.use(bodyParser.json());
 app.get('/', function (request, response) {
     console.log('메인페이지 작동');
     console.log(request.session);
-    response.sendFile(path.join(__dirname + '/views/index.html'));
+    var uname = request.session.username;
+    //response.sendFile(path.join(__dirname + '/views/index.html'));
+    fs.readFile(__dirname + '/views/index.html', 'utf8', function (error, data) {
+        if (request.session.loggedin){
+            response.send(ejs.render(data, {
+                un: uname
+            }));
+        }else{
+            response.send(ejs.render(data, {
+                un: null
+            }));
+        }
+    });
+    //var username = request.body.username;
 
+    
     // db.query(`SELECT nIdx, nImg, nEndDate FROM notice WHERE nEndDate >= DATE(NOW())`, function(error, banner_imgs){
     //         db.query(`SELECT * FROM product WHERE pDelete=0 ORDER BY pDate DESC limit 5;`, function(error, new_products){
     //                 db.query('SELECT sum(od.product_quantity), od.product_id, p.pName, p.pPrice, p.pImg FROM product p, `order` o, order_detail od WHERE p.pIdx=od.product_id and o.oIdx=od.order_id and o.oStatus=3 GROUP BY od.product_id ORDER BY sum(od.product_quantity) DESC limit 5;', function(error2, top_products){
@@ -91,9 +105,7 @@ app.get('/', function (request, response) {
 //     response.sendFile(path.join(__dirname + '/views/login.html'));
 // 	}
 // });
-app.get('/', function (request, response) {
-    response.sendFile(path.join(__dirname + '/views/index.html'));
-});
+
 
 
 //login
@@ -171,21 +183,42 @@ app.get('/logout', function (request, response) {
     response.end();
 });
 
-app.get('/logout', function (request, response) {
-    request.session.loggedin = false;
-    response.send('<center><H1>Logged Out.</H1><H1><a href="/">Goto Home</a></H1></center>');
-    response.end();
-});
 
 
 //findHospital
 app.get('/findHospital', function (request, response) {
-    response.sendFile(path.join(__dirname + '/views/findHospital.html'));
+    //response.sendFile(path.join(__dirname + '/views/findHospital.html'));
+    var uname = request.session.username;
+    fs.readFile(__dirname + '/views/findHospital.html', 'utf8', function (error, data) {
+        if (request.session.loggedin){
+            response.send(ejs.render(data, {
+                un: uname
+            }));
+        }else{
+            response.send(ejs.render(data, {
+                un: null
+            }));
+        }
+    });
+    //response.sendFile(path.join(__dirname + '/views/findHospital.html'));
+
 });
 
 //findPetPlace
 app.get('/findPetPlace', function (request, response) {
-    response.sendFile(path.join(__dirname + '/views/findPetPlace.html'));
+    var uname = request.session.username;
+    fs.readFile(__dirname + '/views/findPetPlace.html', 'utf8', function (error, data) {
+        if (request.session.loggedin){
+            response.send(ejs.render(data, {
+                un: uname
+            }));
+        }else{
+            response.send(ejs.render(data, {
+                un: null
+            }));
+        }
+    });
+    //response.sendFile(path.join(__dirname + '/views/findPetPlace.html'));
 });
 
 //tipsBoard
@@ -198,10 +231,8 @@ app.get('/crudTipsBoard', function (request, response) {
     if (!request.query.page||request.query.page<=0) {
         page=1;
     }
-    
     fs.readFile(__dirname + '/views/crudTipsBoard.html', 'utf8', function (error, data) {
         if (error) console.log(error);
-        var condition = "";
         if(sort){
             condition = " WHERE sort='"+sort+"'";
         }else{
@@ -211,6 +242,7 @@ app.get('/crudTipsBoard', function (request, response) {
             connection.query('SELECT COUNT(*) as count FROM tips'+ condition, function (error, result) {
                 if (error) console.log(error);
                 response.send(ejs.render(data, {
+                    un: request.session.username,
                     tips: results,
                     total: result[0].count,
                     sort: sort,
@@ -230,7 +262,10 @@ app.get('/insertTips', function (request, response) {
     // ������ �н��ϴ�.
     fs.readFile(__dirname + '/views/addTipsBoard.html', 'utf8', function (error, data) {
         // �����մϴ�.
-        response.send(data);
+        response.send(ejs.render(data,{
+            un: request.session.username
+        }));
+        //response.send(data);
     });
 });
 app.post('/insertTips', function (request, response) {
@@ -254,6 +289,7 @@ app.post('/insertTips', function (request, response) {
 
 app.get('/editTips/:id', function (request, response) {
     // ������ �н��ϴ�.
+    
     fs.readFile(__dirname + '/views/editCrudTipsBoard.html', 'utf8', function (error, data) {
         // �����ͺ��̽� ������ �����մϴ�.
         connection.query('SELECT * FROM daily WHERE id = ?', [
@@ -261,7 +297,8 @@ app.get('/editTips/:id', function (request, response) {
         ], function (error, result) {
             // �����մϴ�.
             response.send(ejs.render(data, {
-                data: result[0]
+                data: result[0],
+                un:request.session.username
             }));
         });
     });
@@ -286,10 +323,36 @@ app.post('/editTips/:id', function (request, response) {
 
 //use & privacy
 app.get('/use', function (request, response) {
-    response.sendFile(path.join(__dirname + '/views/use.html'));
+    var uname = request.session.username;
+
+    fs.readFile(__dirname + '/views/use.html', 'utf8', function (error, data) {
+        if (request.session.loggedin){
+            response.send(ejs.render(data, {
+                un: uname
+            }));
+        }else{
+            response.send(ejs.render(data, {
+                un: null
+            }));
+        }
+    });
+    //response.sendFile(path.join(__dirname + '/views/use.html'));
 });
 app.get('/privacy', function (request, response) {
-    response.sendFile(path.join(__dirname + '/views/privacy.html'));
+        var uname = request.session.username;
+
+    fs.readFile(__dirname + '/views/privacy.html', 'utf8', function (error, data) {
+        if (request.session.loggedin){
+            response.send(ejs.render(data, {
+                un: uname
+            }));
+        }else{
+            response.send(ejs.render(data, {
+                un: null
+            }));
+        }
+    });
+    //response.sendFile(path.join(__dirname + '/views/privacy.html'));
 });
 
 // app.get('/index', restrict, function(request, response) {
@@ -315,6 +378,7 @@ app.get('/privacy', function (request, response) {
 // dailyBoard
 app.get('/crudDailyBoard', function (request, response) {
     var page = request.query.page;
+    
     if (!request.query.page||request.query.page<=0) {
         page=1;
     }
@@ -324,6 +388,7 @@ app.get('/crudDailyBoard', function (request, response) {
             connection.query('SELECT COUNT(*) as count FROM daily', function (error, result) {
                 if (error) console.log(error);
                 response.send(ejs.render(data, {
+                    un: request.session.username,
                     list: results,
                     total: result[0].count,
                     page: page,
@@ -363,7 +428,9 @@ app.get('/insertDaily', function (request, response) {
     // ������ �н��ϴ�.
     fs.readFile(__dirname + '/views/addDailyBoard.html', 'utf8', function (error, data) {
         // �����մϴ�.
-        response.send(data);
+        response.send(ejs.render(data,{
+            un: request.session.username
+        }));
     });
 });
 app.post('/insertDaily', function (request, response) {
@@ -393,7 +460,8 @@ app.get('/editDaily/:id', function (request, response) {
         ], function (error, result) {
             // �����մϴ�.
             response.send(ejs.render(data, {
-                data: result[0]
+                data: result[0],
+                un:request.session.username
             }));
         });
     });

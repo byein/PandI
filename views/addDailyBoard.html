@@ -13,6 +13,8 @@
     </link>
     <link rel="stylesheet" href="/crudDailyBoard.css">
     </link>
+    <link rel="stylesheet" href="/addCrudBoard.css">
+    </link>
     <script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap&v=weekly" async defer></script>
 
     <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly" async defer></script>-->
@@ -26,8 +28,12 @@
                 <a class="logo" href="/" title="PandI">PandI</a>
             </h1>
             <div class="login-wrapper">
-                <a class="signIn" href="/login">로그인</a>
-                <a class="signUp" href="/register">회원가입</a>
+                <% if(!un){ %>
+                    <a class="signIn" href="/login">로그인</a>
+                    <a class="signUp" href="/register">회원가입</a>
+                <% } else{ %>
+                    <a class="signIn"><%= un %> 님 환영합니다!</a>
+                <% } %>
             </div>
             <hr>
             <nav class="nav">
