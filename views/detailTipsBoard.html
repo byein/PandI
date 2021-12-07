@@ -69,8 +69,10 @@
             <div class="crudBoard">
                     <table>
                         <caption class="boardType">정보 게시판
-                            <div><button class="btnShellfish"><a href="/deleteTips/<%= data.id %>">DELETE</a></button></div>
-                            <div><button class="btnReptile"><a href="/editTips/<%= data.id %>">EDIT</a></button></div>
+                            <% if (un == data.userName){ %>
+                                <div><button class="btnShellfish"><a href="/deleteDaily/<%= data.id %>">DELETE</a></button></div>
+                                <div><button class="btnReptile"><a href="/editDaily/<%= data.id %>">EDIT</a></button></div>
+                            <% } %>
                         </caption>
                         <colgroup>
                             <col width="20%">
@@ -87,6 +89,12 @@
                                 <label>작성일</label>
                             </th>
                             <td><%= data.date %></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label>글쓴이</label>
+                            </th>
+                            <td><%= data.userName %></td>
                         </tr>
                         <tr>
                             <th><Label>종류</Label></th>
