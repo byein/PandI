@@ -32,7 +32,8 @@
                     <a class="signIn" href="/login">로그인</a>
                     <a class="signUp" href="/register">회원가입</a>
                 <% } else{ %>
-                    <a class="signIn"><%= un %> 님 환영합니다!</a>
+                    <a class="logout"><%= un %> 님 환영합니다!</a>
+                    <a class="logout" href="/logout">로그아웃</a>
                 <% } %>
             </div>
             <hr>
@@ -89,7 +90,7 @@
                         </tr>
                         <tr>
                             <td><label>글쓰기</label></td>
-                            <td><textarea id="review" rows="5" cols="30" maxlength="1000" name="rReview"
+                            <td><textarea type="text" id="text" rows="5" cols="30" maxlength="1000" name="text"
                                 placeholder="1000자 이내(미만)의 일상을 공유해주세요. 공백도 가능합니다."></textarea></td>
                         </tr>
                     </table>

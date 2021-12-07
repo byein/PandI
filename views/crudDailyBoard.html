@@ -30,7 +30,8 @@
                     <a class="signIn" href="/login">로그인</a>
                     <a class="signUp" href="/register">회원가입</a>
                 <% } else{ %>
-                    <a class="signIn"><%= un %> 님 환영합니다!</a>
+                    <a class="logout"><%= un %> 님 환영합니다!</a>
+                    <a class="logout" href="/logout">로그아웃</a>
                 <% } %>
             </div>
             <hr>
@@ -89,7 +90,19 @@
                             <tr>
                                 <td>
                                     <a href="/crudDailyBoard/detail/<%= item.id %>">
-                                        <%= item.sort %>
+                                        <% if (item.sort == "mammal"){ %>
+                                            포유류
+                                        <% }else if (item.sort == "fish") {%>
+                                            어류
+                                        <% }else if (item.sort == "bird") {%>
+                                            조류
+                                        <% }else if (item.sort == "reptile") {%>
+                                            파충류
+                                        <% }else if (item.sort == "shellfish") {%>
+                                            갑각류
+                                        <% } else{ %>
+                                            <%= item.sort %>
+                                        <% } %>
                                     </a>
                                 </td>
                                 <td>

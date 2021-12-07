@@ -32,7 +32,8 @@
                     <a class="signIn" href="/login">로그인</a>
                     <a class="signUp" href="/register">회원가입</a>
                 <% } else{ %>
-                    <a class="signIn"><%= un %> 님 환영합니다!</a>
+                    <a class="logout"><%= un %> 님 환영합니다!</a>
+                    <a class="logout" href="/logout">로그아웃</a>
                 <% } %>
             </div>
             <hr>
@@ -66,31 +67,60 @@
             <div class="crudBoard">
                 <form method="post">
                     <table>
-                        <caption class="boardType">일상 게시판 글쓰기</caption>
+                        <caption class="boardType">일상 게시판 수정</caption>
                         <tr>
-                            <td>
+                            <th>
                                 <label>제목</label>
-                            </td>
+                            </th>
                             <td><input type="text" name="title" value="<%= data.title %>"/></td>
                         </tr>
                         <tr>
-                            <td><Label>종류</Label></td>
+                            <th>
+                                <label>작성일</label>
+                            </th>
+                            <td><%= data.date %></td>
+                        </tr>
+                        <tr>
+                            <th><Label>종류</Label></th>
                             <td><select name="sort" id="petSort">
-                                <option value="mammal">포유류</option>
-                                <option value="bird">조류</option>
-                                <option value="fish">어류</option>
-                                <option value="reptile">파충류</option>
-                                <option value="shellfish">갑각류</option>
+                                <% if(data.sort == "mammal"){ %>
+                                    <option value="mammal" selected>포유류</option>
+                                <% }else{ %>
+                                    <option value="mammal">포유류</option>
+                                <% } %>
+
+                                <% if(data.sort == "bird") { %>
+                                    <option value="bird" selected>조류</option>
+                                <% } else { %>
+                                    <option value="bird">조류</option>
+                                <% } %>
+
+                                <% if(data.sort == "fish") { %>
+                                    <option value="fish" selected>어류</option>
+                                <% } else { %>
+                                    <option value="fish">어류</option>
+                                <% } %>
+
+                                <% if(data.sort == "reptile") { %>
+                                    <option value="reptile" selected>파충류</option>
+                                <% } else { %>
+                                    <option value="reptile">파충류</option>
+                                <% } %>
+
+                                <% if(data.sort == "shellfish") { %>
+                                    <option value="shellfish">갑각류</option>
+                                <% } else { %>
+                                    <option value="shellfish">갑각류</option>
+                                <% } %>
                             </select></td>
                         </tr>
                         <tr>
-                            <td><label>펫 사진</label></td>
+                            <th><label>펫 사진</label></th>
                             <td><input type="file" multiple name="pimg" multiple id="pimg" accept="image/*"></td>
                         </tr>
                         <tr>
-                            <td><label>글쓰기</label></td>
-                            <td><textarea id="review" rows="5" cols="30" maxlength="1000" name="rReview"
-                                value="<%= data.title %>"></textarea></td>
+                            <th><label>글쓰기</label></td>
+                            <td><textarea type="text" id="review" rows="5" cols="30" maxlength="1000" name="text"><%= data.text %></textarea></td>
                         </tr>
                     </table>
                     <input type="submit" value="수정하기"/>

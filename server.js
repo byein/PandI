@@ -12,7 +12,8 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'byein',
     password: 'byein',
-    database: 'pandi'
+    database: 'pandi',
+    dateStrings: "date"
 });
 
 var app = express();
@@ -267,10 +268,12 @@ app.get('/crudTipsBoard/detail/:id', function (request, response) {
 });
 
 app.get('/deleteTips/:id', function (request, response) {
-    connection.query('DELETE FROM products WHERE id=?', [request.param('id')], function () {
+    connection.query('DELETE FROM tips WHERE id=?', [request.param('id')], function () {
         response.redirect('/crudTipsBoard');
     });
 });
+
+
 app.get('/insertTips', function (request, response) {
     // ������ �н��ϴ�.
     fs.readFile(__dirname + '/views/addTipsBoard.html', 'utf8', function (error, data) {
@@ -278,7 +281,6 @@ app.get('/insertTips', function (request, response) {
         response.send(ejs.render(data,{
             un: request.session.username
         }));
-        //response.send(data);
     });
 });
 app.post('/insertTips', function (request, response) {
@@ -299,16 +301,13 @@ app.post('/insertTips', function (request, response) {
     });
 });
 
-
 app.get('/editTips/:id', function (request, response) {
-    // ������ �н��ϴ�.
-    
-    fs.readFile(__dirname + '/views/editCrudTipsBoard.html', 'utf8', function (error, data) {
-        // �����ͺ��̽� ������ �����մϴ�.
-        connection.query('SELECT * FROM daily WHERE id = ?', [
+    fs.readFile(__dirname + '/views/editTipsBoard.html', 'utf8', function (error, data) {
+        connection.query('SELECT * FROM tips WHERE id = ?', [
             request.param('id')
         ], function (error, result) {
-            // �����մϴ�.
+            console.log(result[0]);
+            if(error) console.log(error);
             response.send(ejs.render(data, {
                 data: result[0],
                 un:request.session.username
@@ -316,57 +315,21 @@ app.get('/editTips/:id', function (request, response) {
         });
     });
 });
+
 app.post('/editTips/:id', function (request, response) {
-    // ������ �����մϴ�.
     var body = request.body
 
-    // �����ͺ��̽� ������ �����մϴ�.
-    connection.query('UPDATE daily SET title=?, text=?, img=? WHERE id=?', [
-        body.title, body.text, body.img, request.param('id')
-    ], function () {
-        // �����մϴ�.
+    connection.query('UPDATE tips SET title=?, sort=?, text=? WHERE id=?', [
+        body.title, body.sort, body.text, request.param('id')
+    ], function (error, data) {
+        if(error) console.log(error);
         response.redirect('/crudTipsBoard');
     });
 });
 
-
 // app.get('/crudDailyBoard', function(request, response) {
 // 	response.sendFile(path.join(__dirname + '/views/crudDailyBoard.html'));
 // });
-
-//use & privacy
-app.get('/use', function (request, response) {
-    var uname = request.session.username;
-
-    fs.readFile(__dirname + '/views/use.html', 'utf8', function (error, data) {
-        if (request.session.loggedin){
-            response.send(ejs.render(data, {
-                un: uname
-            }));
-        }else{
-            response.send(ejs.render(data, {
-                un: null
-            }));
-        }
-    });
-    //response.sendFile(path.join(__dirname + '/views/use.html'));
-});
-app.get('/privacy', function (request, response) {
-        var uname = request.session.username;
-
-    fs.readFile(__dirname + '/views/privacy.html', 'utf8', function (error, data) {
-        if (request.session.loggedin){
-            response.send(ejs.render(data, {
-                un: uname
-            }));
-        }else{
-            response.send(ejs.render(data, {
-                un: null
-            }));
-        }
-    });
-    //response.sendFile(path.join(__dirname + '/views/privacy.html'));
-});
 
 // app.get('/index', restrict, function(request, response) {
 // 	if (request.session.loggedin) {
@@ -425,7 +388,7 @@ app.get('/crudDailyBoard/detail/:id', function (request, response) {
 
 
 app.get('/deleteDaily/:id', function (request, response) {
-    connection.query('DELETE FROM products WHERE id=?', [request.param('id')], function () {
+    connection.query('DELETE FROM daily WHERE id=?', [request.param('id')], function () {
         response.redirect('/crudDailyBoard');
     });
 });
@@ -465,8 +428,8 @@ app.post('/insertDaily', function (request, response) {
         response.redirect("/login");
         return;
     }
-    connection.query('INSERT INTO daily (title, sort, userName, view, likes, text, img) VALUES (?, ?, ?, 0, 0, ?, NULL)', [
-        body.title, body.sort, username, body.view, body.likes, body.text
+    connection.query('INSERT INTO daily (title, sort, userName, text, view, likes) VALUES (?, ?, ?, ?, 0, 0)', [
+        body.title, body.sort, username, body.text, body.view, body.likes
     ], function (error) {
         if (error) {
             console.log(error);
@@ -477,13 +440,12 @@ app.post('/insertDaily', function (request, response) {
 });
 
 app.get('/editDaily/:id', function (request, response) {
-    // ������ �н��ϴ�.
-    fs.readFile(__dirname + '/views/editCrudDailyBoard.html', 'utf8', function (error, data) {
-        // �����ͺ��̽� ������ �����մϴ�.
+    fs.readFile(__dirname + '/views/editDailyBoard.html', 'utf8', function (error, data) {
         connection.query('SELECT * FROM daily WHERE id = ?', [
             request.param('id')
         ], function (error, result) {
             console.log(result[0]);
+            if(error) console.log(error);
             response.send(ejs.render(data, {
                 data: result[0],
                 un:request.session.username
@@ -491,19 +453,52 @@ app.get('/editDaily/:id', function (request, response) {
         });
     });
 });
+
 app.post('/editDaily/:id', function (request, response) {
-    // ������ �����մϴ�.
     var body = request.body
 
-    // �����ͺ��̽� ������ �����մϴ�.
-    connection.query('UPDATE daily SET title=?, text=?, img=? WHERE id=?', [
-        body.title, body.text, body.img, request.param('id')
-    ], function () {
-        // �����մϴ�.
+    connection.query('UPDATE daily SET title=?, sort=?, text=? WHERE id=?', [
+        body.title, body.sort, body.text, request.param('id')
+    ], function (error, data) {
+        if(error) console.log(error);
         response.redirect('/crudDailyBoard');
     });
 });
 
+
+//use & privacy
+app.get('/use', function (request, response) {
+    var uname = request.session.username;
+
+    fs.readFile(__dirname + '/views/use.html', 'utf8', function (error, data) {
+        if (request.session.loggedin){
+            response.send(ejs.render(data, {
+                un: uname
+            }));
+        }else{
+            response.send(ejs.render(data, {
+                un: null
+            }));
+        }
+    });
+    //response.sendFile(path.join(__dirname + '/views/use.html'));
+});
+app.get('/privacy', function (request, response) {
+        var uname = request.session.username;
+
+    fs.readFile(__dirname + '/views/privacy.html', 'utf8', function (error, data) {
+        if (request.session.loggedin){
+            response.send(ejs.render(data, {
+                un: uname
+            }));
+        }else{
+            response.send(ejs.render(data, {
+                un: null
+            }));
+        }
+    });
+    //response.sendFile(path.join(__dirname + '/views/privacy.html'));
+});
 
 app.listen(3000, function () {
     console.log('Server Running at http://127.0.0.1:3000');

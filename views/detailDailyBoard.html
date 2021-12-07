@@ -36,7 +36,8 @@
                     <a class="signIn" href="/login">로그인</a>
                     <a class="signUp" href="/register">회원가입</a>
                 <% } else{ %>
-                    <a class="signIn"><%= un %> 님 환영합니다!</a>
+                    <a class="logout"><%= un %> 님 환영합니다!</a>
+                    <a class="logout" href="/logout">로그아웃</a>
                 <% } %>
             </div>
             <hr>
@@ -83,6 +84,12 @@
                                 <label>제목</label>
                             </th>
                             <td><%= data.title %></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label>작성일</label>
+                            </th>
+                            <td><%= data.date %></td>
                         </tr>
                         <tr>
                             <th><Label>종류</Label></th>
