@@ -83,9 +83,8 @@ height: 350px;
 .locationList{
     width: 100%;
     height: 100%;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
-    margin: 15px auto;
     justify-content: center;
 }
 caption{
@@ -94,7 +93,6 @@ caption{
 .locationTable{
     width: 40%;
     height: 100%;
-    margin: 30px;
     border-collapse: collapse;
 }
 .locationTable tr{
@@ -111,3 +109,192 @@ caption{
 
 
 
+
+
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+      
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+      
+      #infowindow-content {
+        display: none;
+      }
+      
+      #map #infowindow-content {
+        display: inline;
+      }
+      
+      .pac-card {
+        background-color: #fff;
+        border: 0;
+        border-radius: 2px;
+        box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+        margin: 10px;
+        padding: 0 0.5em;
+        font: 400 18px Roboto, Arial, sans-serif;
+        overflow: hidden;
+        font-family: Roboto;
+        padding: 0;
+      }
+      
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+      
+      .pac-controls {
+        /*display: inline-block;*/
+        padding: 5px 11px;
+      }
+      
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      
+      #target {
+        width: 345px;
+      }
+
+
+
+
+
+      .hotel-search {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  left: 0;
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+#map {
+  margin-top: 40px;
+  width: 100%;
+}
+
+#listing {
+    display: inline-flex;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: auto;
+  cursor: pointer;
+  overflow-x: hidden;
+}
+
+#findhotels {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 15px auto;
+    justify-content: center;
+  font-size: 14px;
+}
+
+#locationField {
+  -webkit-box-flex: 1 1 190px;
+  -ms-flex: 1 1 190px;
+  flex: 1 1 190px;
+  margin: 0 8px;
+}
+
+#controls {
+  -webkit-box-flex: 1 1 140px;
+  -ms-flex: 1 1 140px;
+  flex: 1 1 140px;
+}
+
+#autocomplete {
+  width: 100%;
+}
+
+#country {
+  width: 100%;
+}
+
+.placeIcon {
+  width: 20px;
+  height: 34px;
+  margin: 4px;
+}
+
+.hotelIcon {
+  width: 24px;
+  height: 24px;
+}
+
+#resultsTable {
+  border-collapse: collapse;
+  width: 100%;
+    display: inline-table;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.locationTable{
+    width: 40%;
+    height: 100%;
+    margin: 30px;
+    border-collapse: collapse;
+}
+
+.btnDetail{
+    color: #FFFFFF;
+    background: #4E7EF8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    cursor: pointer;
+}
+#resultsTable tr{
+    border-bottom: 1px solid #3E3E3E;
+}
+#resultsTable th{
+    text-align: left;
+}
+
+#rating {
+  font-size: 13px;
+  font-family: Arial Unicode MS;
+}
+
+.iw_table_row {
+  height: 18px;
+}
+
+.iw_attribute_name {
+  font-weight: bold;
+  text-align: right;
+}
+
+.iw_table_icon {
+  text-align: right;
+}
+
+.listLeft, .listRight {
+    width: 40%;
+    margin: 30px;
+}

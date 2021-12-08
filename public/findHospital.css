@@ -4,6 +4,7 @@
     color: #AD1D1D;
     font-size: 1.5em;
     font-weight: 900;
+    margin: 20px auto;
 }
 
 .hospitalName{
@@ -17,6 +18,8 @@
     font-size: 1.5em;
     font-weight: 900;
     color: #1D45AD;
+    margin: 20px auto;
+
 }
 
 .pharmacyName{

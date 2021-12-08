@@ -255,14 +255,17 @@ app.get('/crudTipsBoard', function (request, response) {
     });
 });
 
-
 app.get('/crudTipsBoard/detail/:id', function (request, response) {
     fs.readFile(__dirname + '/views/detailTipsBoard.html', 'utf8', function (error, data) {
-        connection.query('SELECT * FROM tips WHERE id=?', [request.param('id')], function (error, result) {
-            response.send(ejs.render(data, {
-                data: result[0],
-                un: request.session.username
-            }));
+        connection.query('SELECT * FROM tips WHERE id=?', [request.param('id')], function (error, re) {
+            connection.query('UPDATE tips set view=? WHERE id=?', [ re[0].view + 1, request.param('id') ], function (error, res){
+                connection.query('SELECT * FROM tips WHERE id=?', [request.param('id')], function (error, result) {
+                    response.send(ejs.render(data, {
+                        data: result[0],
+                        un: request.session.username
+                    }));
+                });
+            });
         });
     });
 });
@@ -377,11 +380,15 @@ app.get('/crudDailyBoard', function (request, response) {
 
 app.get('/crudDailyBoard/detail/:id', function (request, response) {
     fs.readFile(__dirname + '/views/detailDailyBoard.html', 'utf8', function (error, data) {
-        connection.query('SELECT * FROM daily WHERE id=?', [request.param('id')], function (error, result) {
-            response.send(ejs.render(data, {
-                data: result[0],
-                un: request.session.username
-            }));
+        connection.query('SELECT * FROM daily WHERE id=?', [request.param('id')], function (error, re) {
+            connection.query('UPDATE daily set view=? WHERE id=?', [ re[0].view + 1, request.param('id') ], function (error, res){
+                connection.query('SELECT * FROM daily WHERE id=?', [request.param('id')], function (error, result) {
+                    response.send(ejs.render(data, {
+                        data: result[0],
+                        un: request.session.username
+                    }));
+                });
+            });
         });
     });
 });
@@ -392,6 +399,7 @@ app.get('/deleteDaily/:id', function (request, response) {
         response.redirect('/crudDailyBoard');
     });
 });
+
 
 // app.get('/crudTipsBoard', function (request, response) { 
 //     // ������ �н��ϴ�.
