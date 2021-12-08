@@ -69,34 +69,11 @@
     <main>
 
         <article class="findLocation">
-            <form class="searchForm">
-                <div class="searchText">내 주변 동물병원/약국 찾기</div>
-                <input id="pac-input" class="search" type="text" class="search" name="hospital" maxlength="255"
-                    placeholder="Search Box" value="">
-                <button type="submit" class="btnSearch" value="" onclick="showMarker()"></button>
-            </form>
             <div class="hospital-search">
-                <div id="locationField">
-                    <input id="autocomplete" placeholder="Enter a city" type="text" />
-                </div>
-
-                <div id="controls">
-                    <select id="country">
-                        <option value="all">All</option>
-                        <option value="au">Australia</option>
-                        <option value="br">Brazil</option>
-                        <option value="ca">Canada</option>
-                        <option value="fr">France</option>
-                        <option value="de">Germany</option>
-                        <option value="mx">Mexico</option>
-                        <option value="nz">New Zealand</option>
-                        <option value="it">Italy</option>
-                        <option value="za">South Africa</option>
-                        <option value="es">Spain</option>
-                        <option value="pt">Portugal</option>
-                        <option value="us" selected>U.S.A.</option>
-                        <option value="uk">United Kingdom</option>
-                    </select>
+                <div id="locationField" class="searchForm">
+                    <div class="searchText">동물병원/약국 찾기</div>
+                    <input id="autocomplete" class="search" placeholder="현재 어디에 계신가요?" type="text" onsubmit="" />
+                    <button type="submit" class="btnSearch" value="" onclick="showMarker()"></button>
                 </div>
             </div>
             <div id="map"></div>

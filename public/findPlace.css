@@ -60,12 +60,12 @@ main {
     transform: translateY(-50%);
     background: url("/img/search.png");
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-
+    background-size: 28px 28px;
+    cursor: pointer;
     top: 50%;
     left: -50px;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border: 0px;
 }
 
