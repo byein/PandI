@@ -1,5 +1,5 @@
 
-.hospitalType{
+.hospitalType {
     text-align: start;
     color: #AD1D1D;
     font-size: 1.5em;
@@ -7,13 +7,7 @@
     margin: 20px auto;
 }
 
-.hospitalName{
-    color: #AD1D1D;
-    font-weight: 900;
-}
-
-
-.pharmacyType{
+.pharmacyType {
     text-align: start;
     font-size: 1.5em;
     font-weight: 900;
@@ -21,12 +15,3 @@
     margin: 20px auto;
 
 }
-
-.pharmacyName{
-    color: #1D45AD;
-    font-weight: 900;
-}
-
-
-
-

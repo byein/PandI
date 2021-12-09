@@ -1,93 +1,48 @@
-
-.groomingType{
-    text-align: start;
-    color: #AD1D85;
-    font-size: 1.5em;
-    font-weight: 900;
-}
-
-.groomingName{
-    color: #AD1D85;
-    font-weight: 900;
-}
-
-.trainType{
+.hotelType {
     text-align: start;
     font-size: 1.5em;
     font-weight: 900;
-    color: #329B30;
+    color: #9b3030;
 }
 
-.trainName{
-    color: #329B30;
-    font-weight: 900;
-}
-
-
-.hotelType{
+.pensionType {
     text-align: start;
     font-size: 1.5em;
     font-weight: 900;
-    color: #AD1D1D;
+
 }
 
-.hotelName{
-    color: #AD1D1D;
-    font-weight: 900;
-}
-
-
-.pensionType{
-    text-align: start;
-    font-size: 1.5em;
-    font-weight: 900;
-    color: #1D45AD;
-}
-
-.pensionName{
-    color: #1D45AD;
-    font-weight: 900;
-}
-
-
-.funeralType{
+.funeralType {
     text-align: start;
     font-size: 1.5em;
     font-weight: 900;
     color: #3E3E3E;
 }
 
-.funeralName{
-    color: #3E3E3E;
-    font-weight: 900;
-}
-
-
-.cafeType{
+.cafeType {
     text-align: start;
     font-size: 1.5em;
     font-weight: 900;
     color: #CE6A32;
 }
 
-.cafeName{
-    color: #CE6A32;
-    font-weight: 900;
-}
-
-
-.shopType{
+.shopType {
     text-align: start;
     font-size: 1.5em;
     font-weight: 900;
     color: #9332CE;
 }
 
-.shopName{
-    color: #9332CE;
+.ETCType {
+    text-align: start;
+    font-size: 1.5em;
     font-weight: 900;
+    color: #2dac3e;
 }
 
-
-
-
+.AllType {
+    text-align: start;
+    font-size: 1.5em;
+    font-weight: 900;
+    color: #3242ce;
+}

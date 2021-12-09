@@ -4,16 +4,16 @@
     justify-content: center;
     padding: 50px;
 }
-table{
+table {
     justify-content: center;
     margin: 30px auto;
 }
 
-form{
+form {
     display: grid;
 }
 
-input[type=submit]{
+input[type=submit] {
     border: none;
 
     margin: auto;

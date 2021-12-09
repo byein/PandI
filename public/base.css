@@ -66,9 +66,9 @@ header {
 }
 
 /* 로그인 */
+.logout,
 .signIn,
-.signUp,
-.logout {
+.signUp {
     color: #FFFFFF;
     text-decoration: none;
     padding: 0 5px;
@@ -132,23 +132,22 @@ nav .menu li a {
 
 /* 여기까지 헤더바 */
 
-#footer{
+#footer {
     position: relative;
     width: 100%;
     height: 150px;
     text-align: center;
     background-color: #3E3E3E;
-    color:#FFFFFF;
+    color: #FFFFFF;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-#footer a{
+#footer a {
     font-weight: bold;
-    color:#FFFFFF;
+    color: #FFFFFF;
 }
-
 
 main {
     position: relative;

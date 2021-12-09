@@ -4,17 +4,17 @@
     justify-content: center;
     padding: 50px;
 }
-table{
+table {
     width: 70%;
     justify-content: center;
     margin: 30px auto;
 }
 
-form{
+form {
     display: grid;
 }
 
-input[type=submit]{
+input[type=submit] {
     border: none;
 
     margin: auto;
@@ -24,38 +24,40 @@ input[type=submit]{
     color: white;
     cursor: pointer;
 }
- table th td a{
+table th td a {
 
     text-decoration: none;
     color: black;
-  }
+}
 
-  table, th, td {
-      border: 0px;
-      border-collapse: collapse;
-  }
+table,
+td,
+th {
+    border: 0;
+    border-collapse: collapse;
+}
 
-  table th{
-      border-right: 1px solid;
-  }
+table th {
+    border-right: 1px solid;
+}
 
-  table tr{
+table tr {
     border-bottom: 1px solid #3E3E3E;
     border-top: 1px solid #3E3E3E;
-     
-  }
-  table td{
- 
-      text-align: center;
-      line-height: 18px;
-  }
 
-  .pimg{
-      width: fit-content;
-  }
+}
+table td {
 
-  .text{
-     height: 500px;
-     max-width: fit-content;
-     text-align: justify;
-  }
+    text-align: center;
+    line-height: 18px;
+}
+
+.pimg {
+    width: fit-content;
+}
+
+.text {
+    height: 500px;
+    max-width: fit-content;
+    text-align: justify;
+}

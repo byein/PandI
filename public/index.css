@@ -177,7 +177,6 @@
     left: -50px;
     width: 30px;
     height: 30px;
-    border: 0px;
+    border: 0;
     cursor: pointer;
 }
-

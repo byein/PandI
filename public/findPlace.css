@@ -6,7 +6,6 @@ main {
     overflow-x: hidden;
 }
 
-
 .findLocation {
     position: relative;
     width: 100%;
@@ -66,143 +65,133 @@ main {
     left: -50px;
     width: 35px;
     height: 35px;
-    border: 0px;
+    border: 0;
 }
 
-
-.googleMap{
+.googleMap {
     height: 500px;
     width: 100%;
 
 }
 
 #map {
-height: 350px;
+    height: 350px;
 }
 
-.locationList{
+.locationList {
     width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-caption{
-    margin: 10px 0px;
+caption {
+    margin: 10px 0;
 }
-.locationTable{
+.locationTable {
     width: 40%;
     height: 100%;
     border-collapse: collapse;
 }
-.locationTable tr{
+.locationTable tr {
     border-bottom: 1px solid #3E3E3E;
 }
 
-.btnDetail{
+.btnDetail {
     color: #FFFFFF;
     background: #4E7EF8;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     cursor: pointer;
 }
 
+#description {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+}
 
+#infowindow-content .title {
+    font-weight: bold;
+}
 
+#infowindow-content {
+    display: none;
+}
 
+#map #infowindow-content {
+    display: inline;
+}
 
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
-      
-      #infowindow-content .title {
-        font-weight: bold;
-      }
-      
-      #infowindow-content {
-        display: none;
-      }
-      
-      #map #infowindow-content {
-        display: inline;
-      }
-      
-      .pac-card {
-        background-color: #fff;
-        border: 0;
-        border-radius: 2px;
-        box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
-        margin: 10px;
-        padding: 0 0.5em;
-        font: 400 18px Roboto, Arial, sans-serif;
-        overflow: hidden;
-        font-family: Roboto;
-        padding: 0;
-      }
-      
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-      
-      .pac-controls {
-        /*display: inline-block;*/
-        padding: 5px 11px;
-      }
-      
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
+.pac-card {
+    background-color: #fff;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    padding: 0 0.5em;
+    font: 400 18px Roboto, Arial, sans-serif;
+    overflow: hidden;
+    font-family: Roboto;
+    padding: 0;
+}
 
-      
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      
-      #target {
-        width: 345px;
-      }
+#pac-container {
+    padding-bottom: 12px;
+    margin-right: 12px;
+}
 
+.pac-controls {
+    /*display: inline-block;*/
+    padding: 5px 11px;
+}
 
+.pac-controls label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
 
+#title {
+    color: #fff;
+    background-color: #4d90fe;
+    font-size: 25px;
+    font-weight: 500;
+    padding: 6px 12px;
+}
 
+#target {
+    width: 345px;
+}
 
-      .hotel-search {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  left: 0;
-  position: relative;
-  top: 0;
-  width: 100%;
-  z-index: 1;
+.hotel-search {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 #map {
-  margin-top: 40px;
-  width: 100%;
+    margin-top: 40px;
+    width: 100%;
 }
 
 #listing {
     display: inline-flex;
-  position: relative;
-  width: 100%;
-  height: 300px;
-  overflow: auto;
-  cursor: pointer;
-  overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    cursor: pointer;
+    overflow-x: hidden;
 }
 
 #findhotels {
@@ -212,89 +201,102 @@ caption{
     flex-wrap: wrap;
     margin: 15px auto;
     justify-content: center;
-  font-size: 14px;
+    font-size: 14px;
 }
 
 #locationField {
-  -webkit-box-flex: 1 1 190px;
-  -ms-flex: 1 1 190px;
-  flex: 1 1 190px;
-  margin: 0 8px;
+    -webkit-box-flex: 1 1 190px;
+    -ms-flex: 1 1 190px;
+    flex: 1 1 190px;
+    margin: 0 8px;
 }
 
-#controls {
-  -webkit-box-flex: 1 1 140px;
-  -ms-flex: 1 1 140px;
-  flex: 1 1 140px;
+.controls {
+    position: relative;
+    width: 100%;
+    padding: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: #FFFFFF;
+    border: 5px solid #3E3E3E;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
 }
 
 #autocomplete {
-  width: 100%;
+    width: 100%;
 }
 
 #country {
-  width: 100%;
+    width: 100%;
 }
 
 .placeIcon {
-  width: 20px;
-  height: 34px;
-  margin: 4px;
+    width: 20px;
+    height: 34px;
+    margin: 4px;
 }
 
 .hotelIcon {
-  width: 24px;
-  height: 24px;
+    width: 24px;
+    height: 24px;
 }
 
 #resultsTable {
-  border-collapse: collapse;
-  width: 100%;
+    border-collapse: collapse;
+    width: 100%;
     display: inline-table;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.locationTable{
+.locationTable {
     width: 40%;
     height: 100%;
     margin: 30px;
     border-collapse: collapse;
 }
 
-.btnDetail{
+.btnDetail {
     color: #FFFFFF;
     background: #4E7EF8;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     cursor: pointer;
 }
-#resultsTable tr{
+#resultsTable tr {
     border-bottom: 1px solid #3E3E3E;
 }
-#resultsTable th{
+#resultsTable th {
     text-align: left;
 }
 
 #rating {
-  font-size: 13px;
-  font-family: Arial Unicode MS;
+    font-size: 13px;
+    font-family: Arial Unicode MS;
 }
 
 .iw_table_row {
-  height: 18px;
+    height: 18px;
 }
 
 .iw_attribute_name {
-  font-weight: bold;
-  text-align: right;
+    font-weight: bold;
+    text-align: right;
 }
 
 .iw_table_icon {
-  text-align: right;
+    text-align: right;
 }
 
-.listLeft, .listRight {
+.listLeft,
+.listRight {
     width: 40%;
     margin: 30px;
 }
