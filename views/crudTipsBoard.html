@@ -1,207 +1,244 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>동물병원/약국 찾기</title>
-        <link
-            href='https://fonts.googleapis.com/css?family=Cherry Bomb'
-            rel='stylesheet'>
-        <link rel="stylesheet" href="/base.css"></link>
-        <link rel="stylesheet" href="/crudBoard.css"></link>
-        <link rel="stylesheet" href="/crudTipsBoard.css"></link>
-        <!-- <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly"
-        async defer></script>-->
-        <script src="/crudTipsBoard.js"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물병원/약국 찾기</title>
+    <link href='https://fonts.googleapis.com/css?family=Cherry Bomb' rel='stylesheet'>
+    <link rel="stylesheet" href="/base.css">
+    </link>
+    <link rel="stylesheet" href="/crudBoard.css">
+    </link>
+    <link rel="stylesheet" href="/crudTipsBoard.css">
+    </link>
+    <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly" async defer></script>-->
+    <script src="/crudTipsBoard.js"></script>
+</head>
 
-    <body>
-        <header>
-            <div id="header-wrapper">
-                <h1>
-                    <a class="logo" href="/" title="PandI">PandI</a>
-                </h1>
-                <div class="login-wrapper">
-                    <% if(!un){ %>
-                        <a class="signIn" href="/login">로그인</a>
-                        <a class="signUp" href="/register">회원가입</a>
-                    <% } else{ %>
-                        <a class="logout"><%= un %>
-                            님 환영합니다!</a>
-                        <a class="logout" href="/logout">로그아웃</a>
-                    <% } %>
-                </div>
-                <hr>
-                <nav class="nav">
-                    <div id="nav-wrapper">
-                        <ul class="menu">
-                            <li>
-                                <a href="/findHospital">동물병원/약국 찾기</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/findPetPlace">동반장소 찾기</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/crudTipsBoard">정보 공유</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/crudDailyBoard">일상 공유</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+<body>
+    <header>
+        <div id="header-wrapper">
+            <h1>
+                <a class="logo" href="/" title="PandI">PandI</a>
+            </h1>
+            <div class="login-wrapper">
+                <% if(!un){ %>
+                    <a class="signIn" href="/login">로그인</a>
+                    <a class="signUp" href="/register">회원가입</a>
+                <% } else{ %>
+                    <a class="signIn"><%= un %> 님 환영합니다!</a>
+                <% } %>
             </div>
-        </header>
+            <hr>
+            <nav class="nav">
+                <div id="nav-wrapper">
+                    <ul class="menu">
+                        <li>
+                            <a href="/findHospital">동물병원/약국 찾기</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/findPetPlace">동반장소 찾기</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/crudTipsBoard">정보 공유</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/crudDailyBoard">일상 공유</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-        <main>
+    <main>
 
-            <article class="share">
-                <div class="crudBoard">
-                    <table class="boardTable">
-                        <caption class="boardType">정보 게시판
-                            <div>
-                                <button class="btnShellfish">
-                                    <a href="/crudTipsBoard/?sort=shellfish&page=<%= page %>">갑각류</a>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="btnReptile">
-                                    <a href="/crudTipsBoard/?sort=reptile&page=<%= page %>">파충류</a>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="btnFish">
-                                    <a href="/crudTipsBoard/?sort=fish&page=<%= page %>">어류</a>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="btnBird">
-                                    <a href="/crudTipsBoard/?sort=bird&page=<%= page %>">조류</a>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="btnMammal">
-                                    <a href="/crudTipsBoard/?sort=mammal&page=<%= page %>">포유류</a>
-                                </button>
-                            </div>
-                        </caption>
-                        <colgroup>
-                            <col width="60%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="10%">
-                        </colgroup>
-                        <thead>
+        <article class="share">
+            <div class="crudBoard">
+                <table class="boardTable">
+                    <caption class="boardType">정보 게시판
+                        <div><button class="btnShellfish"><a href="/crudTipsBoard/?sort=shellfish&page=<%= page %>">갑각류</a></button></div>
+                        <div><button class="btnReptile"><a href="/crudTipsBoard/?sort=reptile&page=<%= page %>">파충류</a></button></div>
+                        <div><button class="btnFish"><a href="/crudTipsBoard/?sort=fish&page=<%= page %>">어류</a></button></div>
+                        <div><button class="btnBird"><a href="/crudTipsBoard/?sort=bird&page=<%= page %>">조류</a></button></div>
+                        <div><button class="btnMammal"><a href="/crudTipsBoard/?sort=mammal&page=<%= page %>">포유류</a></button></div>
+                    </caption>
+                    <colgroup>
+                        <col width="60%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                            <th>조회수</th>
+                            <th>추천수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% tips.forEach(function(item, index) { %>
                             <tr>
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                                <th>조회수</th>
-                                <th>추천수</th>
+                                <td>
+                                    <a href="/crudTipsBoard/detail/<%= item.id %>">
+                                    <%= item.title %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/crudTipsBoard/detail/<%= item.id %>">
+                                    <%= item.userName %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/crudTipsBoard/detail/<%= item.id %>">
+                                    <%= item.date %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/crudTipsBoard/detail/<%= item.id %>">
+                                    <%= item.view %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/crudTipsBoard/detail/<%= item.id %>">
+                                    <%= item.likes %>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <% tips.forEach(function(item, index) { %>
-                                <tr>
-                                    <td>
-                                        <a href="/crudTipsBoard/detail/<%= item.id %>">
-                                            <%= item.title %>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="/crudTipsBoard/detail/<%= item.id %>">
-                                            <%= item.userName %>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="/crudTipsBoard/detail/<%= item.id %>">
-                                            <%= item.date %>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="/crudTipsBoard/detail/<%= item.id %>">
-                                            <%= item.view %>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="/crudTipsBoard/detail/<%= item.id %>">
-                                            <%= item.likes %>
-                                        </a>
-                                    </td>
-                                </tr>
 
-                                <% }); %>
-                                </tbody>
+                            <% }); %>
+                    </tbody>
 
-                            </table>
-                            <div class="btn">
-                                <a href="/insertTips">작성하기</a>
-                            </div>
 
-                            <div class="center">
-                                <div class="pagination">
+                </table>
+                <div class="btn"><a href="/insertTips">작성하기</a></div>
 
-                                    <% if (Number(page)===1){ %>
-                                        <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= page %>">&laquo;</a>
-                                    <% }else{ %>
-                                        <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= page-1 %>">&laquo;</a>
-                                    <% } %>
-                                    <% for(var i=1;i<=(total+5)/5;i+=1) { %>
-                                        <a
-                                            href="/crudTipsBoard/?sort=<%= sort %>&page=<%= i %>"
-                                            <% if(i==page) { %>
-                                            }="}"
-                                            %="%"class="active"<% >
-                                            >
-                                            <%= i %></a>
-                                    <% } %>
-                                    <% if (Number(page)===parseInt((total+5)/5)){ %>
-                                        <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= page %>">&raquo;</a>
-                                    <% }else{ %>
-                                        <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= Number(page)+1 %>">&raquo;</a>
-                                    <% } %>
-                                </div>
+                <div class="center">
+                    <div class="pagination">
+
+                        <% if (Number(page)===1){ %>
+                            <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= page %>">&laquo;</a>
+                        <% }else{ %>
+                            <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= page-1 %>">&laquo;</a>
+                        <% } %>
+                        <% for(var i=1;i<=(total+5)/5;i+=1) { %>
+                            <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= i %>" <% if(i==page) { %>class="active"<% } %> > <%= i %></a>
+                        <% } %>
+                        <% if (Number(page)===parseInt((total+5)/5)){ %>
+                            <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= page %>">&raquo;</a>
+                        <% }else{ %>
+                            <a href="/crudTipsBoard/?sort=<%= sort %>&page=<%= Number(page)+1 %>">&raquo;</a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <!-- <tr class="event">
+                            <td>[이벤트] 배변봉투 무료나눔 이벤트!</td>
+                            <td>관리자</td>
+                            <td>2021-10-27</td>
+                            <td>1143</td>
+                            <td>110</td>
+                        </tr>
+                        <tr>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>강아지 이빨 손질 방법!</td>
+                            <td>김예빈</td>
+                            <td>2021-10-27</td>
+                            <td>143</td>
+                            <td>10</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        <div class="center">
+                            <div class="pagination">
+                                <a href="#">&laquo;</a>
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">&raquo;</a>
                             </div>
                         </div>
-                        <!-- <tr class="event"> <td>[이벤트] 배변봉투 무료나눔 이벤트!</td> <td>관리자</td>
-                        <td>2021-10-27</td> <td>1143</td> <td>110</td> </tr> <tr> <td>강아지 이빨 손질 방법!</td>
-                        <td>김예빈</td> <td>2021-10-27</td> <td>143</td> <td>10</td> </tr> <tr> <td>강아지 이빨
-                        손질 방법!</td> <td>김예빈</td> <td>2021-10-27</td> <td>143</td> <td>10</td> </tr> <tr>
-                        <td>강아지 이빨 손질 방법!</td> <td>김예빈</td> <td>2021-10-27</td> <td>143</td> <td>10</td>
-                        </tr> <tr> <td>강아지 이빨 손질 방법!</td> <td>김예빈</td> <td>2021-10-27</td> <td>143</td>
-                        <td>10</td> </tr> <tr> <td>강아지 이빨 손질 방법!</td> <td>김예빈</td> <td>2021-10-27</td>
-                        <td>143</td> <td>10</td> </tr> <tr> <td>강아지 이빨 손질 방법!</td> <td>김예빈</td>
-                        <td>2021-10-27</td> <td>143</td> <td>10</td> </tr> <tr> <td>강아지 이빨 손질 방법!</td>
-                        <td>김예빈</td> <td>2021-10-27</td> <td>143</td> <td>10</td> </tr> <tr> <td>강아지 이빨
-                        손질 방법!</td> <td>김예빈</td> <td>2021-10-27</td> <td>143</td> <td>10</td> </tr> <tr>
-                        <td>강아지 이빨 손질 방법!</td> <td>김예빈</td> <td>2021-10-27</td> <td>143</td> <td>10</td>
-                        </tr> </tbody> </table> <div class="center"> <div class="pagination"> <a
-                        href="#">&laquo;</a> <a href="#" class="active">1</a> <a href="#">2</a> <a
-                        href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">6</a> <a
-                        href="#">&raquo;</a> </div> </div> </div> -->
+                        </div> -->
 
-                    </article>
+        </article>
 
-                </main>
-                <footer id="footer">
-                    <p>
-                        <a href="/use">[이용약관]</a>
-                        <a href="/privacy">[개인정보처리방침]</a>
-                        <br><br>
+    </main>
+    <footer id="footer">
+        <p>
+            <a href="/use">[이용약관]</a>
+            <a href="/privacy">[개인정보처리방침]</a>
+            <br><br>
 
-                        [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707
-                        <br>
-                        Copyright 2021. PandI all rights reserved.<br>
-                    </p>
-                </footer>
+            [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707 <br>
+            Copyright 2021. PandI all rights reserved.<br>
+        </p>
+    </footer>
 
-            </body>
+</body>
 
-        </html>
+</html>

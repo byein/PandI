@@ -1,166 +1,158 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>동물병원/약국 찾기</title>
-        <link
-            href='https://fonts.googleapis.com/css?family=Cherry Bomb'
-            rel='stylesheet'>
-        <link rel="stylesheet" href="/base.css"></link>
-        <link rel="stylesheet" href="/findPlace.css"></link>
-        <link rel="stylesheet" href="/findHospital.css"></link>
-        <!-- Google 지도 api 사용 스크립트 추가 -->
-        <!-- <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOlKn_MoHoMoN2w_vlAxgK_eC3kbWcPN0&callback=initMap"async
-        defer></script> -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물병원/약국 찾기</title>
+    <link href='https://fonts.googleapis.com/css?family=Cherry Bomb' rel='stylesheet'>
+    <link rel="stylesheet" href="/base.css">
+    </link>
+    <link rel="stylesheet" href="/findPlace.css">
+    </link>
+    <link rel="stylesheet" href="/findHospital.css">
+    </link>
+    <!-- Google 지도 api 사용 스크립트 추가 -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOlKn_MoHoMoN2w_vlAxgK_eC3kbWcPN0&callback=initMap"async defer></script> -->
 
-        <!-- <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly"
-        async defer></script>-->
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly" async defer></script>-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-        <script src="/findPlace.js"></script>
+    <script src="/findPlace.js"></script>
 
-        <script src="/findHospital.js"></script>
-    </head>
+    <script src="/findHospital.js"></script>
+</head>
 
-    <body>
-        <header>
-            <div id="header-wrapper">
-                <h1>
-                    <a class="logo" href="/" title="PandI">PandI</a>
-                </h1>
-                <div class="login-wrapper">
-                    <% if(!un){ %>
-                        <a class="signIn" href="/login">로그인</a>
-                        <a class="signUp" href="/register">회원가입</a>
+<body>
+    <header>
+        <div id="header-wrapper">
+            <h1>
+                <a class="logo" href="/" title="PandI">PandI</a>
+            </h1>
+            <div class="login-wrapper">
+                <% if(!un){ %>
+                    <a class="signIn" href="/login">로그인</a>
+                    <a class="signUp" href="/register">회원가입</a>
                     <% } else{ %>
                         <a class="logout">
-                            <%= un %>
-                            님 환영합니다!
+                            <%= un %> 님 환영합니다!
                         </a>
                         <a class="logout" href="/logout">로그아웃</a>
-                    <% } %>
-                </div>
-                <hr>
-                <nav class="nav">
-                    <div id="nav-wrapper">
-                        <ul class="menu">
-                            <li>
-                                <a href="/findHospital">동물병원/약국 찾기</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/findPetPlace">동반장소 찾기</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/crudTipsBoard">정보 공유</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/crudDailyBoard">일상 공유</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                        <% } %>
             </div>
-        </header>
-
-        <main>
-
-            <article class="findLocation">
-                <div class="hospital-search">
-                    <div id="locationField" class="searchForm">
-                        <div class="searchText">동물병원/약국 찾기</div>
-                        <input
-                            id="autocomplete"
-                            class="search"
-                            placeholder="현재 어디에 계신가요?"
-                            type="text"
-                            onsubmit=""/>
-                        <button type="submit" class="btnSearch" value="" onclick="showMarker()"></button>
-                    </div>
+            <hr>
+            <nav class="nav">
+                <div id="nav-wrapper">
+                    <ul class="menu">
+                        <li>
+                            <a href="/findHospital">동물병원/약국 찾기</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/findPetPlace">동반장소 찾기</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/crudTipsBoard">정보 공유</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/crudDailyBoard">일상 공유</a>
+                        </li>
+                    </ul>
                 </div>
-                <div id="map"></div>
-                <div class="locationList">
-                    <div class="listLeft">
-                        <h2 class="hospitalType">동물병원</h2>
-                        <div id="listing">
-                            <table id="resultsTable">
-                                <tbody id="resultsVet"></tbody>
-                            </table>
-                        </div>
-                    </div>
+            </nav>
+        </div>
+    </header>
 
-                    <div class="listRight">
-                        <h2 class="pharmacyType">약국</h2>
-                        <div id="listing">
+    <main>
 
-                            <table id="resultsTable">
-
-                                <tbody id="resultsPhar"></tbody>
-                            </table>
-                        </div>
-                    </div>
+        <article class="findLocation">
+            <div class="hospital-search">
+                <div id="locationField" class="searchForm">
+                    <div class="searchText">동물병원/약국 찾기</div>
+                    <input id="autocomplete" class="search" placeholder="현재 어디에 계신가요?" type="text" onsubmit="" />
+                    <button type="submit" class="btnSearch" value="" onclick="showMarker()"></button>
                 </div>
-
-                <div style="display: none">
-                    <div id="info-content">
-                        <table>
-                            <tr id="iw-url-row" class="iw_table_row">
-                                <td id="iw-icon" class="iw_table_icon"></td>
-                                <td id="iw-url"></td>
-                            </tr>
-                            <tr id="iw-address-row" class="iw_table_row">
-                                <td class="iw_attribute_name">Address:</td>
-                                <td id="iw-address"></td>
-                            </tr>
-                            <tr id="iw-phone-row" class="iw_table_row">
-                                <td class="iw_attribute_name">Telephone:</td>
-                                <td id="iw-phone"></td>
-                            </tr>
-                            <tr id="iw-rating-row" class="iw_table_row">
-                                <td class="iw_attribute_name">Rating:</td>
-                                <td id="iw-rating"></td>
-                            </tr>
-                            <tr id="iw-website-row" class="iw_table_row">
-                                <td class="iw_attribute_name">Website:</td>
-                                <td id="iw-website"></td>
-                            </tr>
+            </div>
+            <div id="map"></div>
+            <div class="locationList">
+                <div class="listLeft">
+                    <h2 class="hospitalType">동물병원</h2>
+                    <div id="listing">
+                        <table id="resultsTable">
+                            <tbody id="resultsVet"></tbody>
                         </table>
                     </div>
                 </div>
-                <!-- Async script executes immediately and must be after any DOM elements used
-                in callback. -->
-                <!-- <script
+                
+                <div class="listRight">
+                    <h2 class="pharmacyType">약국</h2>
+                    <div id="listing">
+    
+                        <table id="resultsTable">
+    
+                            <tbody id="resultsPhar"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div style="display: none">
+                <div id="info-content">
+                    <table>
+                        <tr id="iw-url-row" class="iw_table_row">
+                            <td id="iw-icon" class="iw_table_icon"></td>
+                            <td id="iw-url"></td>
+                        </tr>
+                        <tr id="iw-address-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Address:</td>
+                            <td id="iw-address"></td>
+                        </tr>
+                        <tr id="iw-phone-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Telephone:</td>
+                            <td id="iw-phone"></td>
+                        </tr>
+                        <tr id="iw-rating-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Rating:</td>
+                            <td id="iw-rating"></td>
+                        </tr>
+                        <tr id="iw-website-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Website:</td>
+                            <td id="iw-website"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+            <!-- <script
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLzeLnKnBIOWHz9gH_ziuZN1vSI0_Jh5U&callback=initAutocomplete&libraries=places&v=weekly"
                 async defer></script> -->
-                <script
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLzeLnKnBIOWHz9gH_ziuZN1vSI0_Jh5U&callback=initMap&libraries=places&v=weekly"
-                    async="async"></script>
-                <!-- <script
+            <script
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLzeLnKnBIOWHz9gH_ziuZN1vSI0_Jh5U&callback=initMap&libraries=places&v=weekly"
-                async ></script> -->
+                async></script>
+            <!-- <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLzeLnKnBIOWHz9gH_ziuZN1vSI0_Jh5U&callback=initMap&libraries=places&v=weekly"
+                async
+              ></script> -->
+            
 
-            </article>
+        </article>
 
-        </main>
-        <footer id="footer">
-            <p>
-                <a href="/use">[이용약관]</a>
-                <a href="/privacy">[개인정보처리방침]</a>
-                <br><br>
+    </main>
+    <footer id="footer">
+        <p>
+            <a href="/use">[이용약관]</a>
+            <a href="/privacy">[개인정보처리방침]</a>
+            <br><br>
 
-                [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707
-                <br>
-                Copyright 2021. PandI all rights reserved.<br>
-            </p>
-        </footer>
+            [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707 <br>
+            Copyright 2021. PandI all rights reserved.<br>
+        </p>
+    </footer>
 
-    </body>
+</body>
 
 </html>

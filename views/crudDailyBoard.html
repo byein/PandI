@@ -1,186 +1,177 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>동물병원/약국 찾기</title>
-        <link
-            href='https://fonts.googleapis.com/css?family=Cherry Bomb'
-            rel='stylesheet'>
-        <link rel="stylesheet" href="/base.css"></link>
-        <link rel="stylesheet" href="/crudBoard.css"></link>
-        <link rel="stylesheet" href="/crudDailyBoard.css"></link>
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap&v=weekly"
-            async="async"
-            defer="defer"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물병원/약국 찾기</title>
+    <link href='https://fonts.googleapis.com/css?family=Cherry Bomb' rel='stylesheet'>
+    <link rel="stylesheet" href="/base.css">
+    </link>
+    <link rel="stylesheet" href="/crudBoard.css">
+    </link>
+    <link rel="stylesheet" href="/crudDailyBoard.css">
+    </link>
+    <script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap&v=weekly" async defer></script>
 
-        <!-- <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly"
-        async defer></script>-->
-        <script src="/crudDailyBoard.js"></script>
-    </head>
+    <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly" async defer></script>-->
+    <script src="/crudDailyBoard.js"></script>
+</head>
 
-    <body>
-        <header>
-            <div id="header-wrapper">
-                <h1>
-                    <a class="logo" href="/" title="PandI">PandI</a>
-                </h1>
-                <div class="login-wrapper">
-                    <% if(!un){ %>
-                        <a class="signIn" href="/login">로그인</a>
-                        <a class="signUp" href="/register">회원가입</a>
-                    <% } else{ %>
-                        <a class="logout"><%= un %>
-                            님 환영합니다!</a>
-                        <a class="logout" href="/logout">로그아웃</a>
-                    <% } %>
-                </div>
-                <hr>
-                <nav class="nav">
-                    <div id="nav-wrapper">
-                        <ul class="menu">
-                            <li>
-                                <a href="/findHospital">동물병원/약국 찾기</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/findPetPlace">동반장소 찾기</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/crudTipsBoard">정보 공유</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/crudDailyBoard">일상 공유</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+<body>
+    <header>
+        <div id="header-wrapper">
+            <h1>
+                <a class="logo" href="/" title="PandI">PandI</a>
+            </h1>
+            <div class="login-wrapper">
+                <% if(!un){ %>
+                    <a class="signIn" href="/login">로그인</a>
+                    <a class="signUp" href="/register">회원가입</a>
+                <% } else{ %>
+                    <a class="logout"><%= un %> 님 환영합니다!</a>
+                    <a class="logout" href="/logout">로그아웃</a>
+                <% } %>
             </div>
-        </header>
+            <hr>
+            <nav class="nav">
+                <div id="nav-wrapper">
+                    <ul class="menu">
+                        <li>
+                            <a href="/findHospital">동물병원/약국 찾기</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/findPetPlace">동반장소 찾기</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/crudTipsBoard">정보 공유</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/crudDailyBoard">일상 공유</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-        <main>
+    <main>
 
-            <article class="share">
-                <div class="crudBoard">
-                    <table class="boardTable">
-                        <caption class="boardType">일상 게시판
-                        </caption>
-
-                        <colgroup>
-                            <col width="10%">
-                            <col width="50%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="10%">
-                        </colgroup>
-                        <thead>
+        <article class="share">
+            <div class="crudBoard">
+                <table class="boardTable">
+                    <caption class="boardType">일상 게시판
+                    </caption>
+                    
+                    <colgroup>
+                        <col width="10%">
+                        <col width="50%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>펫종류</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                            <th>조회수</th>
+                            <th>추천수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% list.forEach(function(item, index) { %>
                             <tr>
-                                <th>펫종류</th>
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                                <th>조회수</th>
-                                <th>추천수</th>
+                                <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
+                                        <% if (item.sort == "mammal"){ %>
+                                            포유류
+                                        <% }else if (item.sort == "fish") {%>
+                                            어류
+                                        <% }else if (item.sort == "bird") {%>
+                                            조류
+                                        <% }else if (item.sort == "reptile") {%>
+                                            파충류
+                                        <% }else if (item.sort == "shellfish") {%>
+                                            갑각류
+                                        <% } else{ %>
+                                            <%= item.sort %>
+                                        <% } %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
+                                    <%= item.title %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
+                                    <%= item.userName %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
+                                    <%= item.date %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
+                                    <%= item.view %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/crudDailyBoard/detail/<%= item.id %>">
+                                    <%= item.likes %>
+                                    </a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <% list.forEach(function(item, index) { %>
-                                <tr>
-                                    <td>
-                                        <a href="/crudDailyBoard/detail/<%= item.id %>">
-                                            <% if (item.sort == "mammal"){ %>
-                                                포유류
-                                                <% }else if (item.sort == "fish") {%>
-                                                    어류
-                                                    <% }else if (item.sort == "bird") {%>
-                                                        조류
-                                                        <% }else if (item.sort == "reptile") {%>
-                                                            파충류
-                                                            <% }else if (item.sort == "shellfish") {%>
-                                                                갑각류
-                                                            <% } else{ %>
-                                                                <%= item.sort %>
-                                                            <% } %>
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="/crudDailyBoard/detail/<%= item.id %>">
-                                                            <%= item.title %>
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="/crudDailyBoard/detail/<%= item.id %>">
-                                                            <%= item.userName %>
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="/crudDailyBoard/detail/<%= item.id %>">
-                                                            <%= item.date %>
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="/crudDailyBoard/detail/<%= item.id %>">
-                                                            <%= item.view %>
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="/crudDailyBoard/detail/<%= item.id %>">
-                                                            <%= item.likes %>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <% }); %>
-                                                </tbody>
+                            <% }); %>
+                    </tbody>
 
-                                            </table>
-                                            <div class="btn">
-                                                <a href="/insertDaily">작성하기</a>
-                                            </div>
 
-                                            <div class="center">
-                                                <div class="pagination">
+                </table>
+                <div class="btn"><a href="/insertDaily">작성하기</a></div>
 
-                                                    <% if (Number(page) === 1){ %>
-                                                        <a href="/crudDailyBoard/?page=<%= page %>">&laquo;</a>
-                                                    <% }else{ %>
-                                                        <a href="/crudDailyBoard/?page=<%= page-1 %>">&laquo;</a>
-                                                    <% } %>
-                                                    <% for(var i=1;i<=(total+5)/5;i+=1) { %>
-                                                        <a class="active"<% href="/crudDailyBoard/?page=<%= i %>" <% if(i==page) { %> }="}" %="%">
-                                                            >
-                                                            <%= i %></a>
-                                                    <% } %>
-                                                    <% if (Number(page) === parseInt((total+5)/5)){ %>
-                                                        <a href="/crudDailyBoard/?page=<%= page %>">&raquo;</a>
-                                                    <% }else{ %>
-                                                        <a href="/crudDailyBoard/?page=<%= Number(page)+1 %>">&raquo;</a>
-                                                    <% } %>
-                                                </div>
-                                            </div>
-                                        </div>
+                <div class="center">
+                    <div class="pagination">
 
-                                    </article>
+                        <% if (Number(page) === 1){ %>
+                            <a href="/crudDailyBoard/?page=<%= page %>">&laquo;</a>
+                        <% }else{ %>
+                            <a href="/crudDailyBoard/?page=<%= page-1 %>">&laquo;</a>
+                        <% } %>
+                        <% for(var i=1;i<=(total+5)/5;i+=1) { %>
+                            <a href="/crudDailyBoard/?page=<%= i %>" <% if(i==page) { %>class="active"<% } %> >  <%= i %></a>
+                        <% } %>
+                        <% if (Number(page) === parseInt((total+5)/5)){ %>
+                            <a href="/crudDailyBoard/?page=<%= page %>">&raquo;</a>
+                        <% }else{ %>
+                            <a href="/crudDailyBoard/?page=<%= Number(page)+1 %>">&raquo;</a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
 
-                                </main>
-                                <footer id="footer">
-                                    <p>
-                                        <a href="/use">[이용약관]</a>
-                                        <a href="/privacy">[개인정보처리방침]</a>
-                                        <br><br>
+        </article>
 
-                                        [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707
-                                        <br>
-                                        Copyright 2021. PandI all rights reserved.<br>
-                                    </p>
-                                </footer>
+    </main>
+    <footer id="footer">
+        <p>
+            <a href="/use">[이용약관]</a>
+            <a href="/privacy">[개인정보처리방침]</a>
+            <br><br>
 
-                            </body>
+            [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707 <br>
+            Copyright 2021. PandI all rights reserved.<br>
+        </p>
+    </footer>
 
-                        </html>
+</body>
+
+</html>

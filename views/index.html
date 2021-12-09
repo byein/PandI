@@ -28,8 +28,7 @@
                         <a class="signIn" href="/login">로그인</a>
                         <a class="signUp" href="/register">회원가입</a>
                     <% } else{ %>
-                        <a class="logout"><%= un %>
-                            님 환영합니다!</a>
+                        <a class="logout"><%= un %> 님 환영합니다!</a>
                         <a class="logout" href="/logout">로그아웃</a>
                     <% } %>
                 </div>
@@ -100,7 +99,7 @@
             <article class="findLocation">
                 <form class="searchForm">
                     <div class="searchText">내 주변 동물병원/약국 찾기</div>
-                    <input class="search" type="text" name="hospital" maxlength="255" value="">
+                    <input class="search" type="text" class="search" name="hospital" maxlength="255" value="">
                     <button type="submit" class="btnSearch" value=""></button>
                 </form>
             </article>
@@ -111,9 +110,8 @@
                 <a href="/use">[이용약관]</a>
                 <a href="/privacy">[개인정보처리방침]</a>
                 <br><br>
-
-                [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707
-                <br>
+    
+                [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707 <br>
                 Copyright 2021. PandI all rights reserved.<br>
             </p>
         </footer>

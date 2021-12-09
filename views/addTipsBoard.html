@@ -1,136 +1,115 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>동물병원/약국 찾기</title>
-        <link
-            href='https://fonts.googleapis.com/css?family=Cherry Bomb'
-            rel='stylesheet'>
-        <link rel="stylesheet" href="/base.css"></link>
-        <link rel="stylesheet" href="/crudBoard.css"></link>
-        <link rel="stylesheet" href="/crudDailyBoard.css"></link>
-        <link rel="stylesheet" href="/addBoard.css"></link>
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap&v=weekly"
-            async="async"
-            defer="defer"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물병원/약국 찾기</title>
+    <link href='https://fonts.googleapis.com/css?family=Cherry Bomb' rel='stylesheet'>
+    <link rel="stylesheet" href="/base.css">
+    </link>
+    <link rel="stylesheet" href="/crudBoard.css">
+    </link>
+    <link rel="stylesheet" href="/crudDailyBoard.css">
+    </link>
+    <link rel="stylesheet" href="/addBoard.css">
+    </link>
+    <script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap&v=weekly" async defer></script>
 
-        <!-- <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly"
-        async defer></script>-->
-        <script src="/crudDailyBoard.js"></script>
-    </head>
+    <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly" async defer></script>-->
+    <script src="/crudDailyBoard.js"></script>
+</head>
 
-    <body>
-        <header>
-            <div id="header-wrapper">
-                <h1>
-                    <a class="logo" href="/" title="PandI">PandI</a>
-                </h1>
-                <div class="login-wrapper">
-                    <% if(!un){ %>
-                        <a class="signIn" href="/login">로그인</a>
-                        <a class="signUp" href="/register">회원가입</a>
-                    <% } else{ %>
-                        <a class="logout"><%= un %>
-                            님 환영합니다!</a>
-                        <a class="logout" href="/logout">로그아웃</a>
-                    <% } %>
-                </div>
-                <hr>
-                <nav class="nav">
-                    <div id="nav-wrapper">
-                        <ul class="menu">
-                            <li>
-                                <a href="/findHospital">동물병원/약국 찾기</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/findPetPlace">동반장소 찾기</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/crudTipsBoard">정보 공유</a>
-                            </li>
-                            <li class="menuBar">|</li>
-                            <li>
-                                <a href="/crudDailyBoard">일상 공유</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+<body>
+    <header>
+        <div id="header-wrapper">
+            <h1>
+                <a class="logo" href="/" title="PandI">PandI</a>
+            </h1>
+            <div class="login-wrapper">
+                <% if(!un){ %>
+                    <a class="signIn" href="/login">로그인</a>
+                    <a class="signUp" href="/register">회원가입</a>
+                <% } else{ %>
+                    <a class="logout"><%= un %> 님 환영합니다!</a>
+                    <a class="logout" href="/logout">로그아웃</a>
+                <% } %>
             </div>
-        </header>
+            <hr>
+            <nav class="nav">
+                <div id="nav-wrapper">
+                    <ul class="menu">
+                        <li>
+                            <a href="/findHospital">동물병원/약국 찾기</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/findPetPlace">동반장소 찾기</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/crudTipsBoard">정보 공유</a>
+                        </li>
+                        <li class="menuBar">|</li>
+                        <li>
+                            <a href="/crudDailyBoard">일상 공유</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-        <main>
+    <main>
 
-            <article class="share">
-                <div class="crudBoard">
-                    <form method="post">
-                        <table>
-                            <caption class="boardType">정보 게시판 글쓰기</caption>
-                            <tr>
-                                <td>
-                                    <label>제목</label>
-                                </td>
-                                <td><input type="text" name="title"/></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>종류</label>
-                                </td>
-                                <td>
-                                    <select name="sort" id="petSort">
-                                        <option value="mammal">포유류</option>
-                                        <option value="bird">조류</option>
-                                        <option value="fish">어류</option>
-                                        <option value="reptile">파충류</option>
-                                        <option value="shellfish">갑각류</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>팁 사진</label>
-                                </td>
-                                <td><input type="file" multiple="multiple" name="pimg" id="pimg" accept="image/*"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>글쓰기</label>
-                                </td>
-                                <td>
-                                    <textarea
-                                        type="text"
-                                        id="text"
-                                        rows="5"
-                                        cols="30"
-                                        maxlength="1000"
-                                        name="text"
-                                        placeholder="1000자 이내(미만)의 정보를 공유해주세요."></textarea>
-                                </td>
-                            </tr>
-                        </table>
-                        <input type="submit" value="등록하기" id="btnSubmit"/>
-                    </form>
-                </article>
+        <article class="share">
+            <div class="crudBoard">
+                <form method="post">
+                    <table>
+                        <caption class="boardType">정보 게시판 글쓰기</caption>
+                        <tr>
+                            <td>
+                                <label>제목</label>
+                            </td>
+                            <td><input type="text" name="title" /></td>
+                        </tr>
+                        <tr>
+                            <td><Label>종류</Label></td>
+                            <td><select name="sort" id="petSort">
+                                    <option value="mammal">포유류</option>
+                                    <option value="bird">조류</option>
+                                    <option value="fish">어류</option>
+                                    <option value="reptile">파충류</option>
+                                    <option value="shellfish">갑각류</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td><label>팁 사진</label></td>
+                            <td><input type="file" multiple name="pimg" multiple id="pimg" accept="image/*"></td>
+                        </tr>
+                        <tr>
+                            <td><label>글쓰기</label></td>
+                            <td><textarea type="text" id="text" rows="5" cols="30" maxlength="1000" name="text"
+                                    placeholder="1000자 이내(미만)의 정보를 공유해주세요."></textarea></td>
+                        </tr>
+                    </table>
+                    <input type="submit" value="등록하기" id="btnSubmit"/>
+                </form>
+        </article>
 
-            </main>
-            <footer id="footer">
-                <p>
-                    <a href="/use">[이용약관]</a>
-                    <a href="/privacy">[개인정보처리방침]</a>
-                    <br><br>
+    </main>
+    <footer id="footer">
+        <p>
+            <a href="/use">[이용약관]</a>
+            <a href="/privacy">[개인정보처리방침]</a>
+            <br><br>
 
-                    [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707
-                    <br>
-                    Copyright 2021. PandI all rights reserved.<br>
-                </p>
-            </footer>
+            [01811] 서울 노원구 공릉로 232 서울과학기술대학교 컴퓨터공학과 미래관 315호 TEL : 02-970-6707 <br>
+            Copyright 2021. PandI all rights reserved.<br>
+        </p>
+    </footer>
 
-        </body>
+</body>
 
-    </html>
+</html>
