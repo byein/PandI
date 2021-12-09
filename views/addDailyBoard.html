@@ -65,7 +65,7 @@
 
         <article class="share">
             <div class="crudBoard">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     <table>
                         <caption class="boardType">일상 게시판 글쓰기</caption>
                         <tr>
@@ -85,8 +85,8 @@
                             </select></td>
                         </tr>
                         <tr>
-                            <td><label>펫 사진</label></td>
-                            <td><input type="file" multiple name="pimg" multiple id="pimg" accept="image/*"></td>
+                            <td><label>펫 모습</label></td>
+                            <td><input type="file" multiple name="dimg" multiple id="dimg" accept="image/*, video/*"></td>
                         </tr>
                         <tr>
                             <td><label>글쓰기</label></td>

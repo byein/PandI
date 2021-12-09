@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var multer = require('multer');
 var { v4: UUID } = require('uuid');
+const { Router } = require('express');
+//var FileStore = require('session-file-store')(session); //세션을 파일에 저장
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -20,7 +22,8 @@ var app = express();
 app.use(session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    //store: new FileStore()
 }));
 
 var upload = multer({
@@ -33,6 +36,7 @@ var upload = multer({
         }
     })
 });
+
 
 app.use(express.static('public'));
 app.use(express.static('router'));
@@ -294,8 +298,8 @@ app.post('/insertTips', function (request, response) {
         response.redirect("/login");
         return;
     }
-    connection.query('INSERT INTO tips (title, sort, userName, text, view, likes, img) VALUES (?, ?, ?, ?, 0, 0, NULL)', [
-        body.title, body.sort, username, body.text, body.view, body.likes
+    connection.query('INSERT INTO tips (title, sort, userName, text, view, likes, img) VALUES (?, ?, ?, ?, 0, 0, ?)', [
+        body.title, body.sort, username, body.text, body.view, body.likes, body.filename
     ], function (error) {
         if (error) {
             console.log(error);
@@ -429,15 +433,19 @@ app.get('/insertDaily', function (request, response) {
     });
 });
 
-app.post('/insertDaily', function (request, response) {
+
+app.post('/insertDaily', upload.single('dimg'), function (request, response) {
     var body = request.body;
     var username = request.session.username;
+    
+    var dimg = `/uploads/${request.file.originalname}`;
     if(!username) {
         response.redirect("/login");
         return;
     }
-    connection.query('INSERT INTO daily (title, sort, userName, text, view, likes, img) VALUES (?, ?, ?, ?, 0, 0, NULL)', [
-        body.title, body.sort, username, body.text, body.view, body.likes
+    console.log(dimg);
+    connection.query('INSERT INTO daily (title, sort, userName, text, img, view, likes) VALUES (?, ?, ?, ?, ?, 0, 0)', [
+        body.title, body.sort, username, body.text, dimg, body.view, body.likes
     ], function (error) {
         if (error) {
             console.log(error);
@@ -462,11 +470,12 @@ app.get('/editDaily/:id', function (request, response) {
     });
 });
 
-app.post('/editDaily/:id', function (request, response) {
+app.post('/editDaily/:id', upload.single('file'), function (request, response) {
     var body = request.body
-
-    connection.query('UPDATE daily SET title=?, sort=?, text=? WHERE id=?', [
-        body.title, body.sort, body.text, request.param('id')
+    var dimg = '/uploads/'+`${request.file.filename}`;
+    console.groupCollapsed(dimg);
+    connection.query('UPDATE daily SET title=?, sort=?, text=? img=? WHERE id=?', [
+        body.title, body.sort, body.text, dimg, request.param('id')
     ], function (error, data) {
         if(error) console.log(error);
         response.redirect('/crudDailyBoard');

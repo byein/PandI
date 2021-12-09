@@ -13,8 +13,6 @@
     </link>
     <link rel="stylesheet" href="/crudDailyBoard.css">
     </link>
-    <link rel="stylesheet" href="/addCrudBoard.css">
-    </link>
     <link rel="stylesheet" href="/detailBoard.css">
     </link>
     <link rel="stylesheet" href="/crudTipsBoard.css">
@@ -23,6 +21,8 @@
 
     <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgC-vBeTQmBw6UHYxx_FORpx-naCKqWAI&callback=initMap&v=weekly" async defer></script>-->
     <script src="/crudDailyBoard.js"></script>
+    <script src="/detailDailyBoard.js"></script>
+
 </head>
 
 <body>
@@ -110,8 +110,21 @@
                             <td><%= data.view %></td>
                         </tr>
                         <tr>
-                            <th><label>펫 사진</label></th>
-                            <td class="pimg"><%= data.img %></td>
+                            <th><label>펫 모습</label></th>
+                            <td class="pimg">
+                                <img src="<%= data.img %>" onerror="this.remove ? this.remove() : this.removeNode();"/>
+                                <video controls width="500" id="pvideo">
+                                    <source src="<%= data.img %>" id="pvideosrc"/>
+                                </video>
+                                <script>
+                                    var vd = document.getElementById("pvideo")
+                                    var mv = document.getElementById("pvideosrc");
+                                    mv.onerror = function(){
+                                        mv.remove();
+                                        vd.remove();
+                                    }
+                                </script>
+                            </td>
                         </tr>
                         <tr>
                             <th><label>내용</label></th>
