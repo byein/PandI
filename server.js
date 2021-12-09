@@ -259,7 +259,7 @@ app.get('/crudTipsBoard', function (request, response) {
     });
 });
 
-app.get('/crudTipsBoard/detail/:id', function (request, response) {
+app.get('/crudTipsBoard/:id', function (request, response) {
     fs.readFile(__dirname + '/views/detailTipsBoard.html', 'utf8', function (error, data) {
         connection.query('SELECT * FROM tips WHERE id=?', [request.param('id')], function (error, re) {
             connection.query('UPDATE tips set view=? WHERE id=?', [ re[0].view + 1, request.param('id') ], function (error, res){
@@ -470,11 +470,11 @@ app.get('/editDaily/:id', function (request, response) {
     });
 });
 
-app.post('/editDaily/:id', upload.single('file'), function (request, response) {
+app.post('/editDaily/:id', upload.single('dimg'), function (request, response) {    
+    var dimg = '/uploads/' + `${request.file.originalname}`;
     var body = request.body
-    var dimg = '/uploads/'+`${request.file.filename}`;
     console.groupCollapsed(dimg);
-    connection.query('UPDATE daily SET title=?, sort=?, text=? img=? WHERE id=?', [
+    connection.query(`UPDATE daily SET title=?, sort=?, text=?, img=? WHERE id=?`, [
         body.title, body.sort, body.text, dimg, request.param('id')
     ], function (error, data) {
         if(error) console.log(error);
