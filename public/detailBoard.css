@@ -61,3 +61,7 @@ table td {
     max-width: fit-content;
     text-align: justify;
 }
+
+.img{
+    max-width: 300px;
+}

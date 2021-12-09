@@ -74,7 +74,10 @@
                         <caption class="boardType">일상 게시판
                             <% if (un == data.userName){ %>
                                 <div><button class="btnShellfish"><a href="/deleteDaily/<%= data.id %>">DELETE</a></button></div>
-                                <div><button class="btnReptile"><a href="/editDaily/<%= data.id %>">EDIT</a></button></div>
+                                <div><button id = "like" class="btnReptile"><a href="/editDaily/<%= data.id %>">EDIT</a></button></div>
+                            <% } %>
+                            <% if (un && un != data.userName) {%>
+                            <div><button class="btnFish"><a href="/like/<%= data.id %>">좋아요</a></button></div>
                             <% } %>
                         </caption>
                         <colgroup>
@@ -110,13 +113,19 @@
                             <td><%= data.view %></td>
                         </tr>
                         <tr>
+                            <th>
+                                <label>추천수</label>
+                            </th>
+                            <td><%= data.likes %></td>
+                        </tr>
+                        <tr>
                             <th><label>펫 모습</label></th>
                             <td class="pimg">
-                                <img src="<%= data.img %>" onerror="this.remove ? this.remove() : this.removeNode();"/>
-                                <img src="<%= data.img2 %>" onerror="this.remove ? this.remove() : this.removeNode();"/>
-                                <img src="<%= data.img3 %>" onerror="this.remove ? this.remove() : this.removeNode();"/>
-                                <img src="<%= data.img4 %>" onerror="this.remove ? this.remove() : this.removeNode();"/>
-                                <img src="<%= data.img5 %>" onerror="this.remove ? this.remove() : this.removeNode();"/>
+                                <img src="<%= data.img %>" class="img" onerror="this.remove ? this.remove() : this.removeNode();"/>
+                                <img src="<%= data.img2 %>" class="img" onerror="this.remove ? this.remove() : this.removeNode();"/>
+                                <img src="<%= data.img3 %>" class="img" onerror="this.remove ? this.remove() : this.removeNode();"/>
+                                <img src="<%= data.img4 %>" class="img" onerror="this.remove ? this.remove() : this.removeNode();"/>
+                                <img src="<%= data.img5 %>" class="img" onerror="this.remove ? this.remove() : this.removeNode();"/>
 
                                 <video controls width="500" id="pvideo">
                                     <source src="<%= data.img %>" id="pvideosrc"/>
@@ -172,6 +181,7 @@
                             <td class="text"><%= data.text %></td>
                         </tr>
                     </table>
+            
                 </form>
         </article>
 

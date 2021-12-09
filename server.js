@@ -386,8 +386,9 @@ app.get('/crudDailyBoard', function (request, response) {
 app.get('/crudDailyBoard/detail/:id', function (request, response) {
     fs.readFile(__dirname + '/views/detailDailyBoard.html', 'utf8', function (error, data) {
         connection.query('SELECT * FROM daily WHERE id=?', [request.param('id')], function (error, re) {
-            connection.query('UPDATE daily set view=? WHERE id=?', [ re[0].view + 1, request.param('id') ], function (error, res){
+            connection.query('UPDATE daily set view=? WHERE id=?', [re[0].view + 1, request.param('id')], function (error, res){
                 connection.query('SELECT * FROM daily WHERE id=?', [request.param('id')], function (error, result) {
+                    if(error) console.log(error);
                     response.send(ejs.render(data, {
                         data: result[0],
                         un: request.session.username
@@ -398,10 +399,17 @@ app.get('/crudDailyBoard/detail/:id', function (request, response) {
     });
 });
 
+app.get('/like/:id', function(request, response){
+    connection.query('SELECT * FROM daily WHERE id=?',[request.param('id')], function(error, re){
+        connection.query('UPDATE daily set likes=? WHERE id=?', [re[0].likes + 1, request.param('id')], function(error, res){
+            response.redirect(`/crudDailyBoard/detail/${re[0].id}`);
+        });
+    });
+});
 
 app.get('/deleteDaily/:id', function (request, response) {
     connection.query('DELETE FROM daily WHERE id=?', [request.param('id')], function () {
-        response.redirect('/crudDailyBoard');
+        response.redirect('/crudDailyBoard/detail/'+request.params('id'));
     });
 });
 
