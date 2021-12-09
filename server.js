@@ -434,18 +434,21 @@ app.get('/insertDaily', function (request, response) {
 });
 
 
-app.post('/insertDaily', upload.single('dimg'), function (request, response) {
+app.post('/insertDaily', upload.fields([{name : 'dimg' }]), function (request, response) {
     var body = request.body;
     var username = request.session.username;
-    
-    var dimg = `/uploads/${request.file.originalname}`;
+    var dimg = new Array();
+    var file = request.files;
+    for(var i = 0;i<file['dimg'].length;i++){
+        dimg[i] = `/uploads/${file['dimg'][i].originalname}`;
+    }
     if(!username) {
         response.redirect("/login");
         return;
     }
     console.log(dimg);
-    connection.query('INSERT INTO daily (title, sort, userName, text, img, view, likes) VALUES (?, ?, ?, ?, ?, 0, 0)', [
-        body.title, body.sort, username, body.text, dimg, body.view, body.likes
+    connection.query('INSERT INTO daily (title, sort, userName, text, img, img2, img3, img4, img5, view, likes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0)', [
+        body.title, body.sort, username, body.text, dimg[0], dimg[1], dimg[2], dimg[3], dimg[4], body.view, body.likes
     ], function (error) {
         if (error) {
             console.log(error);
