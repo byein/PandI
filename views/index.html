@@ -13,7 +13,11 @@
         <link rel="stylesheet" href="/base.css"></link>
 
         <link rel="stylesheet" href="/index.css"></link>
+        <link rel="stylesheet" href="/findHospital.css"></link>
+        <link rel="stylesheet" href="/findPlace.css"></link>
+
         <script src="/index.js"></script>
+        <script src="/findHospital.js"></script>
 
     </head>
 
@@ -97,12 +101,82 @@
             <script type="text/javascript" src="/index.js"></script>
 
             <article class="findLocation">
+                <div class="hospital-search">
+                    <div id="locationField" class="searchForm">
+                        <div class="searchText">내 주변 동물병원/약국 찾기</div>
+                        <input id="autocomplete" class="search" placeholder="현재 어디에 계신가요?" type="text" onsubmit="" />
+                        <button type="submit" class="btnSearch" value="" onclick="showMarker()"></button>
+                    </div>
+                    <div class="dialog">리스트로 확인하고 싶으시면 동물병원/약국 찾기 메뉴로 이동해주세요.</div>
+
+                </div>
+                <div id="map"></div>
+                <div style="display: none">
+                
+                    <div class="locationList">
+                        <div class="listLeft">
+                            <h2 class="hospitalType">동물병원</h2>
+                            <div id="listing">
+                                <table id="resultsTable">
+                                    <tbody id="resultsVet"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                
+                        <div class="listRight">
+                            <h2 class="pharmacyType">약국</h2>
+                            <div id="listing">
+                
+                                <table id="resultsTable">
+                
+                                    <tbody id="resultsPhar"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div id="info-content">
+                        <table>
+                            <tr id="iw-url-row" class="iw_table_row">
+                                <td id="iw-icon" class="iw_table_icon"></td>
+                                <td id="iw-url"></td>
+                            </tr>
+                            <tr id="iw-address-row" class="iw_table_row">
+                                <td class="iw_attribute_name">Address:</td>
+                                <td id="iw-address"></td>
+                            </tr>
+                            <tr id="iw-phone-row" class="iw_table_row">
+                                <td class="iw_attribute_name">Telephone:</td>
+                                <td id="iw-phone"></td>
+                            </tr>
+                            <tr id="iw-rating-row" class="iw_table_row">
+                                <td class="iw_attribute_name">Rating:</td>
+                                <td id="iw-rating"></td>
+                            </tr>
+                            <tr id="iw-website-row" class="iw_table_row">
+                                <td class="iw_attribute_name">Website:</td>
+                                <td id="iw-website"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+                <!-- <script
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLzeLnKnBIOWHz9gH_ziuZN1vSI0_Jh5U&callback=initAutocomplete&libraries=places&v=weekly"
+                    async defer></script> -->
+                <script
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLzeLnKnBIOWHz9gH_ziuZN1vSI0_Jh5U&callback=initMap&libraries=places&v=weekly"
+                    async></script>
+            </article>
+            <!-- <article class="findLocation">
                 <form class="searchForm">
                     <div class="searchText">내 주변 동물병원/약국 찾기</div>
                     <input class="search" type="text" class="search" name="hospital" maxlength="255" value="">
                     <button type="submit" class="btnSearch" value=""></button>
                 </form>
-            </article>
+                
+            </article> -->
 
         </main>
         <footer id="footer">

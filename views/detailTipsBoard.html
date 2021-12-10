@@ -71,7 +71,10 @@
                         <caption class="boardType">정보 게시판
                             <% if (un == data.userName){ %>
                                 <div><button class="btnShellfish"><a href="/deleteTips/<%= data.id %>">DELETE</a></button></div>
-                                <div><button class="btnReptile"><a href="/editTips/<%= data.id %>">EDIT</a></button></div>
+                                <div><button id = "like" class="btnReptile"><a href="/editTips/<%= data.id %>">EDIT</a></button></div>
+                            <% } %>
+                            <% if (un && un != data.userName) {%>
+                            <div><button class="btnFish"><a href="/likeTips/<%= data.id %>">좋아요</a></button></div>
                             <% } %>
                         </caption>
                         <colgroup>
@@ -107,8 +110,68 @@
                             <td><%= data.view %></td>
                         </tr>
                         <tr>
-                            <th><label>팁 사진</label></th>
-                            <td class="pimg"><%= data.img %></td>
+                            <th>
+                                <label>추천수</label>
+                            </th>
+                            <td><%= data.likes %></td>
+                        </tr>
+                        <tr>
+                            <th><label>팁 사진/동영상</label></th>
+                            <td class="pimg">
+                                <img src="<%= data.img %>" class="img" onerror="this.remove ? this.remove() : this.removeNode();"/>
+                                <img src="<%= data.img2 %>" class="img" onerror="this.remove ? this.remove() : this.removeNode();"/>
+                                <img src="<%= data.img3 %>" class="img" onerror="this.remove ? this.remove() : this.removeNode();"/>
+                                <img src="<%= data.img4 %>" class="img" onerror="this.remove ? this.remove() : this.removeNode();"/>
+                                <img src="<%= data.img5 %>" class="img" onerror="this.remove ? this.remove() : this.removeNode();"/>
+
+                                <video controls width="500" id="pvideo">
+                                    <source src="<%= data.img %>" id="pvideosrc"/>
+                                </video>
+                                <video controls width="500" id="pvideo2">
+                                    <source src="<%= data.img2 %>" id="pvideosrc2"/>
+                                </video>
+                                <video controls width="500" id="pvideo3">
+                                    <source src="<%= data.img3 %>" id="pvideosrc3"/>
+                                </video>
+                                <video controls width="500" id="pvideo4">
+                                    <source src="<%= data.img4 %>" id="pvideosrc4"/>
+                                </video>
+                                <video controls width="500" id="pvideo5">
+                                    <source src="<%= data.img5 %>" id="pvideosrc5"/>
+                                </video>
+                                <script>
+                                    var vd = document.getElementById("pvideo")
+                                    var mv = document.getElementById("pvideosrc");
+                                    mv.onerror = function(){
+                                        mv.remove();
+                                        vd.remove();
+                                    }
+                                    var vd2 = document.getElementById("pvideo2")
+                                    var mv2 = document.getElementById("pvideosrc2");
+                                    mv2.onerror = function(){
+                                        mv2.remove();
+                                        vd2.remove();
+                                    }
+                                    var vd3 = document.getElementById("pvideo3")
+                                    var mv3 = document.getElementById("pvideosrc3");
+                                    mv3.onerror = function(){
+                                        mv3.remove();
+                                        vd3.remove();
+                                    }
+                                    var vd4 = document.getElementById("pvideo4")
+                                    var mv4 = document.getElementById("pvideosrc4");
+                                    mv4.onerror = function(){
+                                        mv4.remove();
+                                        vd4.remove();
+                                    }
+                                    var vd5 = document.getElementById("pvideo5")
+                                    var mv5 = document.getElementById("pvideosrc5");
+                                    mv5.onerror = function(){
+                                        mv5.remove();
+                                        vd5.remove();
+                                    }
+                                </script>
+                            </td>
                         </tr>
                         <tr>
                             <th><label>내용</label></th>

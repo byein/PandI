@@ -9,6 +9,8 @@ main {
 .findLocation {
     position: relative;
     width: 100%;
+    height: fit-content;
+    overflow: hidden;
 }
 
 .searchForm {

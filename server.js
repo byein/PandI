@@ -259,7 +259,8 @@ app.get('/crudTipsBoard', function (request, response) {
     });
 });
 
-app.get('/crudTipsBoard/:id', function (request, response) {
+
+app.get('/crudTipsBoard/detail/:id', function (request, response) {
     fs.readFile(__dirname + '/views/detailTipsBoard.html', 'utf8', function (error, data) {
         connection.query('SELECT * FROM tips WHERE id=?', [request.param('id')], function (error, re) {
             connection.query('UPDATE tips set view=? WHERE id=?', [ re[0].view + 1, request.param('id') ], function (error, res){
@@ -275,12 +276,19 @@ app.get('/crudTipsBoard/:id', function (request, response) {
 });
 
 
+app.get('/likeTips/:id', function(request, response){
+    connection.query('SELECT * FROM tips WHERE id=?',[request.param('id')], function(error, re){
+        connection.query('UPDATE tips set likes=? WHERE id=?', [re[0].likes + 1, request.param('id')], function(error, res){
+            response.redirect(`/crudTipsBoard/detail/${re[0].id}`);
+        });
+    });
+});
+
 app.get('/deleteTips/:id', function (request, response) {
     connection.query('DELETE FROM tips WHERE id=?', [request.param('id')], function () {
         response.redirect('/crudTipsBoard');
     });
 });
-
 
 app.get('/insertTips', function (request, response) {
     // ������ �н��ϴ�.
@@ -291,15 +299,22 @@ app.get('/insertTips', function (request, response) {
         }));
     });
 });
-app.post('/insertTips', function (request, response) {
+
+app.post('/insertTips', upload.fields([{name : 'timg' }]), function (request, response) {
     var body = request.body;
     var username = request.session.username;
+    var timg = new Array();
+    var file = request.files;
+    for(var i = 0;i<file['timg'].length;i++){
+        timg[i] = `/uploads/${file['timg'][i].originalname}`;
+    }
     if(!username) {
         response.redirect("/login");
         return;
     }
-    connection.query('INSERT INTO tips (title, sort, userName, text, view, likes, img) VALUES (?, ?, ?, ?, 0, 0, ?)', [
-        body.title, body.sort, username, body.text, body.view, body.likes, body.filename
+    console.log(timg);
+    connection.query('INSERT INTO tips (title, sort, userName, text, img, img2, img3, img4, img5, view, likes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0)', [
+        body.title, body.sort, username, body.text, timg[0], timg[1], timg[2], timg[3], timg[4], body.view, body.likes
     ], function (error) {
         if (error) {
             console.log(error);
@@ -324,11 +339,16 @@ app.get('/editTips/:id', function (request, response) {
     });
 });
 
-app.post('/editTips/:id', function (request, response) {
+app.post('/editTips/:id', upload.fields([{name : 'timg' }]), function (request, response) {  
     var body = request.body
-
-    connection.query('UPDATE tips SET title=?, sort=?, text=? WHERE id=?', [
-        body.title, body.sort, body.text, request.param('id')
+    var timg = new Array();
+    var file = request.files;
+    for(var i = 0;i<file['timg'].length;i++){
+        timg[i] = `/uploads/${file['timg'][i].originalname}`;
+    }  
+    console.groupCollapsed(timg);
+    connection.query(`UPDATE tips SET title=?, sort=?, text=?, img=?, img2=?, img3=?, img4=?, img5=? WHERE id=?`, [
+        body.title, body.sort, body.text, timg[0], timg[1], timg[2], timg[3], timg[4], request.param('id')
     ], function (error, data) {
         if(error) console.log(error);
         response.redirect('/crudTipsBoard');
@@ -409,7 +429,7 @@ app.get('/like/:id', function(request, response){
 
 app.get('/deleteDaily/:id', function (request, response) {
     connection.query('DELETE FROM daily WHERE id=?', [request.param('id')], function () {
-        response.redirect('/crudDailyBoard/detail/'+request.params('id'));
+        response.redirect('/crudDailyBoard');
     });
 });
 
@@ -481,12 +501,17 @@ app.get('/editDaily/:id', function (request, response) {
     });
 });
 
-app.post('/editDaily/:id', upload.single('dimg'), function (request, response) {    
-    var dimg = '/uploads/' + `${request.file.originalname}`;
+
+app.post('/editDaily/:id', upload.fields([{name : 'dimg' }]), function (request, response) {  
     var body = request.body
+    var dimg = new Array();
+    var file = request.files;
+    for(var i = 0;i<file['dimg'].length;i++){
+        dimg[i] = `/uploads/${file['dimg'][i].originalname}`;
+    }  
     console.groupCollapsed(dimg);
-    connection.query(`UPDATE daily SET title=?, sort=?, text=?, img=? WHERE id=?`, [
-        body.title, body.sort, body.text, dimg, request.param('id')
+    connection.query(`UPDATE daily SET title=?, sort=?, text=?, img=?, img2=?, img3=?, img4=?, img5=? WHERE id=?`, [
+        body.title, body.sort, body.text, dimg[0], dimg[1], dimg[2], dimg[3], dimg[4], request.param('id')
     ], function (error, data) {
         if(error) console.log(error);
         response.redirect('/crudDailyBoard');
